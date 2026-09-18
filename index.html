@@ -30,6 +30,22 @@
             box-shadow: 0 6px 20px rgba(123, 63, 0, 0.08);
             border: 1px solid var(--border-color);
         }
+        .logos-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        .logos-container img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            border-radius: 8px;
+            background: #faf7f2;
+            padding: 5px;
+            border: 1px solid var(--border-color);
+        }
         h1 {
             font-size: 1.5rem;
             color: var(--primary-color);
@@ -154,14 +170,27 @@
             border: 1px solid #c8e6c9;
             margin-top: 20px;
         }
+        #prezzoContainer {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed var(--border-color);
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
+    <!-- Spazio Loghi -->
+    <div class="logos-container">
+        <img src="hbl.png" alt="Logo HBL" onerror="this.style.display='none'">
+        <img src="doppiobaffo.png" alt="Logo Doppiobaffo" onerror="this.style.display='none'">
+        <img src="ubt.png" alt="Logo UBT" onerror="this.style.display='none'">
+    </div>
+
     <h1>Saison Oltrepò Pavese</h1>
     <div class="intro">
-        Prototipo in collaborazione con l'Università degli Studi di Pavia (con cereali del territorio e bargnolino). Valuta il prodotto secondo le tue preferenze[cite: 1].
+        Prototipo in collaborazione con l'Università degli Studi di Pavia (con cereali del territorio e bargnolino). Valuta il prodotto secondo le tue preferenze.
     </div>
 
     <form id="degustazioneForm">
@@ -184,12 +213,12 @@
 
         <!-- 1. Aspetto Rosato -->
         <div class="section">
-            <label class="question">1. Ti piace l'aspetto rosato e la sua schiuma?[cite: 1]</label>
+            <label class="question">1. Ti piace l'aspetto rosato e la sua schiuma?</label>
             <div class="radio-group">
                 <label><input type="radio" name="aspetto_si_no" value="SI"> SI</label>
                 <label><input type="radio" name="aspetto_si_no" value="NO"> NO</label>
             </div>
-            <label class="question" style="font-size:0.85rem; font-weight:normal; margin-top:15px; color:#555;">Valuta da 1 (non mi piace) a 5 (mi piace molto)[cite: 1]:</label>
+            <label class="question" style="font-size:0.85rem; font-weight:normal; margin-top:15px; color:#555;">Valuta da 1 (non mi piace) a 5 (mi piace molto):</label>
             <div class="scale-group">
                 <label><input type="radio" name="aspetto_voto" value="1"><br>1</label>
                 <label><input type="radio" name="aspetto_voto" value="2"><br>2</label>
@@ -201,14 +230,14 @@
 
         <!-- 2. Profumo Floreale -->
         <div class="section">
-            <label class="question">2. Profumo Floreale[cite: 1]</label>
+            <label class="question">2. Profumo Floreale</label>
             <div class="options-group">
                 <label><input type="radio" name="profumo_floreale_tipo" value="ASSENTE"> Assente</label>
                 <label><input type="radio" name="profumo_floreale_tipo" value="DELICATO"> Delicato</label>
                 <label><input type="radio" name="profumo_floreale_tipo" value="MEDIO"> Medio</label>
                 <label><input type="radio" name="profumo_floreale_tipo" value="INTENSO"> Intenso</label>
             </div>
-            <label class="question" style="font-size:0.85rem; font-weight:normal; margin-top:15px; color:#555;">Valuta da 1 a 5[cite: 1]:</label>
+            <label class="question" style="font-size:0.85rem; font-weight:normal; margin-top:15px; color:#555;">Valuta da 1 a 5:</label>
             <div class="scale-group">
                 <label><input type="radio" name="profumo_floreale_voto" value="1"><br>1</label>
                 <label><input type="radio" name="profumo_floreale_voto" value="2"><br>2</label>
@@ -220,14 +249,14 @@
 
         <!-- 3. Profumo Fruttato -->
         <div class="section">
-            <label class="question">3. Profumo Fruttato[cite: 1]</label>
+            <label class="question">3. Profumo Fruttato</label>
             <div class="options-group">
                 <label><input type="radio" name="profumo_fruttato_tipo" value="ASSENTE"> Assente</label>
                 <label><input type="radio" name="profumo_fruttato_tipo" value="DELICATO"> Delicato</label>
                 <label><input type="radio" name="profumo_fruttato_tipo" value="MEDIO"> Medio</label>
                 <label><input type="radio" name="profumo_fruttato_tipo" value="INTENSO"> Intenso</label>
             </div>
-            <label class="question" style="font-size:0.85rem; font-weight:normal; margin-top:15px; color:#555;">Valuta da 1 a 5[cite: 1]:</label>
+            <label class="question" style="font-size:0.85rem; font-weight:normal; margin-top:15px; color:#555;">Valuta da 1 a 5:</label>
             <div class="scale-group">
                 <label><input type="radio" name="profumo_fruttato_voto" value="1"><br>1</label>
                 <label><input type="radio" name="profumo_fruttato_voto" value="2"><br>2</label>
@@ -239,13 +268,13 @@
 
         <!-- 4. Corposità -->
         <div class="section">
-            <label class="question">4. Corposità[cite: 1]</label>
+            <label class="question">4. Corposità</label>
             <div class="options-group">
                 <label><input type="radio" name="corposita_tipo" value="ACQUOSA"> Acquosa</label>
                 <label><input type="radio" name="corposita_tipo" value="MEDIO CORPO"> Medio corpo</label>
                 <label><input type="radio" name="corposita_tipo" value="MOLTO CORPOSA"> Molto corposa</label>
             </div>
-            <label class="question" style="font-size:0.85rem; font-weight:normal; margin-top:15px; color:#555;">Valuta da 1 a 5[cite: 1]:</label>
+            <label class="question" style="font-size:0.85rem; font-weight:normal; margin-top:15px; color:#555;">Valuta da 1 a 5:</label>
             <div class="scale-group">
                 <label><input type="radio" name="corposita_voto" value="1"><br>1</label>
                 <label><input type="radio" name="corposita_voto" value="2"><br>2</label>
@@ -257,14 +286,14 @@
 
         <!-- 5. Gusto Fruttato -->
         <div class="section">
-            <label class="question">5. Gusto Fruttato[cite: 1]</label>
+            <label class="question">5. Gusto Fruttato</label>
             <div class="options-group">
                 <label><input type="radio" name="gusto_fruttato_tipo" value="ASSENTE"> Assente</label>
                 <label><input type="radio" name="gusto_fruttato_tipo" value="DELICATO"> Delicato</label>
                 <label><input type="radio" name="gusto_fruttato_tipo" value="MEDIO"> Medio</label>
                 <label><input type="radio" name="gusto_fruttato_tipo" value="INTENSO"> Intenso</label>
             </div>
-            <label class="question" style="font-size:0.85rem; font-weight:normal; margin-top:15px; color:#555;">Valuta da 1 a 5[cite: 1]:</label>
+            <label class="question" style="font-size:0.85rem; font-weight:normal; margin-top:15px; color:#555;">Valuta da 1 a 5:</label>
             <div class="scale-group">
                 <label><input type="radio" name="gusto_fruttato_voto" value="1"><br>1</label>
                 <label><input type="radio" name="gusto_fruttato_voto" value="2"><br>2</label>
@@ -274,17 +303,17 @@
             </div>
         </div>
 
-        <!-- 6. Retrogusto -->
+        <!-- 6. Retrogusto (Multi-selezione con Checkbox) -->
         <div class="section">
-            <label class="question">6. Retrogusto[cite: 1]</label>
+            <label class="question">6. Retrogusto (puoi selezionare più elementi)</label>
             <div class="options-group">
-                <label><input type="radio" name="retrogusto" value="MALTATO"> Maltato</label>
-                <label><input type="radio" name="retrogusto" value="AMARO"> Amaro</label>
-                <label><input type="radio" name="retrogusto" value="FRUTTATO"> Fruttato</label>
-                <label><input type="radio" name="retrogusto" value="SPEZIATO"> Speziato</label>
-                <label><input type="radio" name="retrogusto" value="ALTRO"> Altro</label>
+                <label><input type="checkbox" name="retrogusto" value="MALTATO"> Maltato</label>
+                <label><input type="checkbox" name="retrogusto" value="AMARO"> Amaro</label>
+                <label><input type="checkbox" name="retrogusto" value="FRUTTATO"> Fruttato</label>
+                <label><input type="checkbox" name="retrogusto" value="SPEZIATO"> Speziato</label>
+                <label><input type="checkbox" name="retrogusto" value="ALTRO"> Altro</label>
             </div>
-            <label class="question" style="font-size:0.85rem; font-weight:normal; margin-top:15px; color:#555;">Valuta da 1 a 5[cite: 1]:</label>
+            <label class="question" style="font-size:0.85rem; font-weight:normal; margin-top:15px; color:#555;">Valuta da 1 a 5:</label>
             <div class="scale-group">
                 <label><input type="radio" name="retrogusto_voto" value="1"><br>1</label>
                 <label><input type="radio" name="retrogusto_voto" value="2"><br>2</label>
@@ -296,29 +325,33 @@
 
         <!-- 7. Valutazioni Finali -->
         <div class="section">
-            <label class="question">7. Secondo te, è abbastanza bargnolinosa?[cite: 1]</label>
+            <label class="question">7. Secondo te, è abbastanza bargnolinosa?</label>
             <div class="radio-group">
                 <label><input type="radio" name="abbastanza_bargnolinosa" value="SI"> SI</label>
                 <label><input type="radio" name="abbastanza_bargnolinosa" value="NO"> NO</label>
             </div>
         </div>
 
+        <!-- 8. Intento d'acquisto e prezzo condizionale -->
         <div class="section">
-            <label class="question">8. La compreresti?[cite: 1]</label>
+            <label class="question">8. La compreresti?</label>
             <div class="radio-group">
-                <label><input type="radio" name="compreresti" value="SI"> SI</label>
-                <label><input type="radio" name="compreresti" value="NO"> NO</label>
+                <label><input type="radio" name="compreresti" value="SI" onclick="togglePrezzo(true)"> SI</label>
+                <label><input type="radio" name="compreresti" value="NO" onclick="togglePrezzo(false)"> NO</label>
             </div>
-            <label class="question" style="font-size:0.85rem; font-weight:normal; margin-top:15px; color:#555;">Se sì, quanto saresti disposto a spendere (bott. 33cl)?[cite: 1]:</label>
-            <div class="options-group" style="flex-direction: column; gap: 8px;">
-                <label><input type="radio" name="prezzo_disposto" value="2-3 euro"> Da 2 a 3 euro[cite: 1]</label>
-                <label><input type="radio" name="prezzo_disposto" value="3-4 euro"> Da 3 a 4 euro[cite: 1]</label>
-                <label><input type="radio" name="prezzo_disposto" value="4-5 euro"> Da 4 a 5 euro[cite: 1]</label>
+            
+            <div id="prezzoContainer">
+                <label class="question" style="font-size:0.9rem; margin-bottom:8px;">Se sì, quanto saresti disposto a spendere (bott. 33cl)?:</label>
+                <div class="options-group" style="flex-direction: column; gap: 8px;">
+                    <label><input type="radio" name="prezzo_disposto" value="2-3 euro"> Da 2 a 3 euro</label>
+                    <label><input type="radio" name="prezzo_disposto" value="3-4 euro"> Da 3 a 4 euro</label>
+                    <label><input type="radio" name="prezzo_disposto" value="4-5 euro"> Da 4 a 5 euro</label>
+                </div>
             </div>
         </div>
 
         <div class="section">
-            <label class="question" for="note">Note / Consigli[cite: 1]</label>
+            <label class="question" for="note">Note / Consigli</label>
             <textarea id="note" rows="3" placeholder="Eventuali commenti o osservazioni..."></textarea>
         </div>
 
@@ -332,7 +365,16 @@
 </div>
 
 <script>
-    const WEB_APP_URL = "IL_TUO_URL_DI_GOOGLE_APPS_SCRIPT_QUI";
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbz3sCQGgsuAKKJ1XUdeB6XOMa_JFfEkSvrr3HI2gouFQFTJuOZZd_7UZbHYc-tk31PC/exec";
+
+    function togglePrezzo(mostra) {
+        const container = document.getElementById('prezzoContainer');
+        container.style.display = mostra ? 'block' : 'none';
+        if (!mostra) {
+            // Svuota la selezione del prezzo se l'utente seleziona "NO"
+            document.querySelectorAll('input[name="prezzo_disposto"]').forEach(el => el.checked = false);
+        }
+    }
 
     document.getElementById('degustazioneForm').addEventListener('submit', function(e) {
         e.preventDefault();
@@ -344,6 +386,14 @@
         const getRadioVal = (name) => {
             const el = document.querySelector(`input[name="${name}"]:checked`);
             return el ? el.value : "";
+        };
+
+        // Raccolta dei checkbox selezionati per il retrogusto (uniti da virgola)
+        const getCheckboxesVal = (name) => {
+            const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
+            let values = [];
+            checkboxes.forEach((cb) => values.push(cb.value));
+            return values.join(', ');
         };
 
         const dati = {
@@ -360,7 +410,7 @@
             corposita_voto: getRadioVal('corposita_voto'),
             gusto_fruttato_tipo: getRadioVal('gusto_fruttato_tipo'),
             gusto_fruttato_voto: getRadioVal('gusto_fruttato_voto'),
-            retrogusto: getRadioVal('retrogusto'),
+            retrogusto: getCheckboxesVal('retrogusto'),
             retrogusto_voto: getRadioVal('retrogusto_voto'),
             abbastanza_bargnolinosa: getRadioVal('abbastanza_bargnolinosa'),
             compreresti: getRadioVal('compreresti'),

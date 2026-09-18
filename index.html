@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Degustazione Saison Oltrepò Pavese</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f6f9; color: #333; margin: 0; padding: 20px; }
+        .container { max-width: 600px; background: #fff; margin: 0 auto; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h1 { font-size: 1.4rem; color: #2c3e50; text-align: center; margin-bottom: 10px; }
+        .intro { font-size: 0.9rem; color: #555; text-align: center; margin-bottom: 25px; line-height: 1.4; }
+        .section { margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .highlight-box { background: #e8f4fd; padding: 15px; border-radius: 6px; border: 1px solid #bbe1fa; margin-bottom: 25px; }
+        label.question { font-weight: bold; display: block; margin-bottom: 8px; font-size: 0.95rem; }
+        .options-group, .radio-group { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 10px; }
+        .scale-group { display: flex; justify-content: space-between; align-items: center; background: #fafafa; padding: 10px; border-radius: 6px; margin-top: 5px; }
+        .scale-group label { font-size: 0.85rem; text-align: center; cursor: pointer; }
+        textarea, input[type="text"], select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-top: 5px; }
+        button { background-color: #27ae60; color: white; border: none; padding: 12px 20px; font-size: 1rem; width: 100%; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        button:hover { background-color: #219653; }
+        .success-msg { display: none; background-color: #d4edda; color: #155724; padding: 15px; border-radius: 4px; text-align: center; font-weight: bold; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>UNA SAISON DELL'OLTREPO' PAVESE</h1>
+    <div class="intro">
+        Prototipo in collaborazione con l'Università degli Studi di Pavia (con cereali del territorio e bargnolino). Valuta il prodotto secondo le tue preferenze[cite: 1].
+    </div>
+
+    <form id="degustazioneForm">
+        
+        <!-- Selezione della versione in prova -->
+        <div class="highlight-box">
+            <label class="question" for="versione_birra">Seleziona la versione che stai assaggiando: *</label>
+            <select id="versione_birra" required>
+                <option value="">-- Scegli la versione --</option>
+                <option value="Versione A">Versione A</option>
+                <option value="Versione B">Versione B</option>
+                <option value="Versione C">Versione C</option>
+                <option value="Versione D">Versione D</option>
+            </select>
+        </div>
+
+        <div class="section">
+            <label class="question">Nome o ID Assaggiatore (facoltativo)</label>
+            <input type="text" id="nome" placeholder="Il tuo nome">
+        </div>
+
+        <!-- 1. Aspetto Rosato -->
+        <div class="section">
+            <label class="question">1. Ti piace l'aspetto rosato e la sua schiuma?[cite: 1]</label>
+            <div class="radio-group">
+                <label><input type="radio" name="aspetto_si_no" value="SI"> SI</label>
+                <label><input type="radio" name="aspetto_si_no" value="NO"> NO</label>
+            </div>
+            <label class="question" style="font-size:0.85rem; font-weight:normal; margin-top:10px;">Valuta da 1 a 5 (non mi piace / mi piace molto)[cite: 1]:</label>
+            <div class="scale-group">
+                <label><input type="radio" name="aspetto_voto" value="1"><br>1</label>
+                <label><input type="radio" name="aspetto_voto" value="2"><br>2</label>
+                <label><input type="radio" name="aspetto_voto" value="3"><br>3</label>
+                <label><input type="radio" name="aspetto_voto" value="4"><br>4</label>
+                <label><input type="radio" name="aspetto_voto" value="5"><br>5</label>
+            </div>
+        </div>
+
+        <!-- 2. Profumo Floreale -->
+        <div class="section">
+            <label class="question">2. Profumo Floreale[cite: 1]</label>
+            <div class="options-group">
+                <label><input type="radio" name="profumo_floreale_tipo" value="ASSENTE"> Assente</label>
+                <label><input type="radio" name="profumo_floreale_tipo" value="DELICATO"> Delicato</label>
+                <label><input type="radio" name="profumo_floreale_tipo" value="MEDIO"> Medio</label>
+                <label><input type="radio" name="profumo_floreale_tipo" value="INTENSO"> Intenso</label>
+            </div>
+            <label class="question" style="font-size:0.85rem; font-weight:normal; margin-top:10px;">Valuta da 1 a 5[cite: 1]:</label>
+            <div class="scale-group">
+                <label><input type="radio" name="profumo_floreale_voto" value="1"><br>1</label>
+                <label><input type="radio" name="profumo_floreale_voto" value="2"><br>2</label>
+                <label><input type="radio" name="profumo_floreale_voto" value="3"><br>3</label>
+                <label><input type="radio" name="profumo_floreale_voto" value="4"><br>4</label>
+                <label><input type="radio" name="profumo_floreale_voto" value="5"><br>5</label>
+            </div>
+        </div>
+
+        <!-- 3. Profumo Fruttato -->
+        <div class="section">
+            <label class="question">3. Profumo Fruttato[cite: 1]</label>
+            <div class="options-group">
+                <label><input type="radio" name="profumo_fruttato_tipo" value="ASSENTE"> Assente</label>
+                <label><input type="radio" name="profumo_fruttato_tipo" value="DELICATO"> Delicato</label>
+                <label><input type="radio" name="profumo_fruttato_tipo" value="MEDIO"> Medio</label>
+                <label><input type="radio" name="profumo_fruttato_tipo" value="INTENSO"> Intenso</label>
+            </div>
+            <label class="question" style="font-size:0.85rem; font-weight:normal; margin-top:10px;">Valuta da 1 a 5[cite: 1]:</label>
+            <div class="scale-group">
+                <label><input type="radio" name="profumo_fruttato_voto" value="1"><br>1</label>
+                <label><input type="radio" name="profumo_fruttato_voto" value="2"><br>2</label>
+                <label><input type="radio" name="profumo_fruttato_voto" value="3"><br>3</label>
+                <label><input type="radio" name="profumo_fruttato_voto" value="4"><br>4</label>
+                <label><input type="radio" name="profumo_fruttato_voto" value="5"><br>5</label>
+            </div>
+        </div>
+
+        <!-- 4. Corposità -->
+        <div class="section">
+            <label class="question">4. Corposità[cite: 1]</label>
+            <div class="options-group">
+                <label><input type="radio" name="corposita_tipo" value="ACQUOSA"> Acquosa</label>
+                <label><input type="radio" name="corposita_tipo" value="MEDIO CORPO"> Medio corpo</label>
+                <label><input type="radio" name="corposita_tipo" value="MOLTO CORPOSA"> Molto corposa</label>
+            </div>
+            <label class="question" style="font-size:0.85rem; font-weight:normal; margin-top:10px;">Valuta da 1 a 5[cite: 1]:</label>
+            <div class="scale-group">
+                <label><input type="radio" name="corposita_voto" value="1"><br>1</label>
+                <label><input type="radio" name="corposita_voto" value="2"><br>2</label>
+                <label><input type="radio" name="corposita_voto" value="3"><br>3</label>
+                <label><input type="radio" name="corposita_voto" value="4"><br>4</label>
+                <label><input type="radio" name="corposita_voto" value="5"><br>5</label>
+            </div>
+        </div>
+
+        <!-- 5. Gusto Fruttato -->
+        <div class="section">
+            <label class="question">5. Gusto Fruttato[cite: 1]</label>
+            <div class="options-group">
+                <label><input type="radio" name="gusto_fruttato_tipo" value="ASSENTE"> Assente</label>
+                <label><input type="radio" name="gusto_fruttato_tipo" value="DELICATO"> Delicato</label>
+                <label><input type="radio" name="gusto_fruttato_tipo" value="MEDIO"> Medio</label>
+                <label><input type="radio" name="gusto_fruttato_tipo" value="INTENSO"> Intenso</label>
+            </div>
+            <label class="question" style="font-size:0.85rem; font-weight:normal; margin-top:10px;">Valuta da 1 a 5[cite: 1]:</label>
+            <div class="scale-group">
+                <label><input type="radio" name="gusto_fruttato_voto" value="1"><br>1</label>
+                <label><input type="radio" name="gusto_fruttato_voto" value="2"><br>2</label>
+                <label><input type="radio" name="gusto_fruttato_voto" value="3"><br>3</label>
+                <label><input type="radio" name="gusto_fruttato_voto" value="4"><br>4</label>
+                <label><input type="radio" name="gusto_fruttato_voto" value="5"><br>5</label>
+            </div>
+        </div>
+
+        <!-- 6. Retrogusto -->
+        <div class="section">
+            <label class="question">6. Retrogusto[cite: 1]</label>
+            <div class="options-group">
+                <label><input type="radio" name="retrogusto" value="MALTATO"> Maltato</label>
+                <label><input type="radio" name="retrogusto" value="AMARO"> Amaro</label>
+                <label><input type="radio" name="retrogusto" value="FRUTTATO"> Fruttato</label>
+                <label><input type="radio" name="retrogusto" value="SPEZIATO"> Speziato</label>
+                <label><input type="radio" name="retrogusto" value="ALTRO"> Altro</label>
+            </div>
+            <label class="question" style="font-size:0.85rem; font-weight:normal; margin-top:10px;">Valuta da 1 a 5[cite: 1]:</label>
+            <div class="scale-group">
+                <label><input type="radio" name="retrogusto_voto" value="1"><br>1</label>
+                <label><input type="radio" name="retrogusto_voto" value="2"><br>2</label>
+                <label><input type="radio" name="retrogusto_voto" value="3"><br>3</label>
+                <label><input type="radio" name="retrogusto_voto" value="4"><br>4</label>
+                <label><input type="radio" name="retrogusto_voto" value="5"><br>5</label>
+            </div>
+        </div>
+
+        <!-- 7. Valutazioni Finali -->
+        <div class="section">
+            <label class="question">7. Secondo te, è abbastanza bargnolinosa?[cite: 1]</label>
+            <div class="radio-group">
+                <label><input type="radio" name="abbastanza_bargnolinosa" value="SI"> SI</label>
+                <label><input type="radio" name="abbastanza_bargnolinosa" value="NO"> NO</label>
+            </div>
+        </div>
+
+        <div class="section">
+            <label class="question">8. La compreresti?[cite: 1]</label>
+            <div class="radio-group">
+                <label><input type="radio" name="compreresti" value="SI"> SI</label>
+                <label><input type="radio" name="compreresti" value="NO"> NO</label>
+            </div>
+            <label class="question" style="font-size:0.85rem; font-weight:normal; margin-top:10px;">Se sì, quanto saresti disposto a spendere (bott. 33cl)?[cite: 1]</label>
+            <div class="options-group" style="flex-direction: column; gap: 8px;">
+                <label><input type="radio" name="prezzo_disposto" value="2-3 euro"> Da 2 a 3 euro[cite: 1]</label>
+                <label><input type="radio" name="prezzo_disposto" value="3-4 euro"> Da 3 a 4 euro[cite: 1]</label>
+                <label><input type="radio" name="prezzo_disposto" value="4-5 euro"> Da 4 a 5 euro[cite: 1]</label>
+            </div>
+        </div>
+
+        <!-- Note / Consigli -->
+        <div class="section">
+            <label class="question">Note / Consigli[cite: 1]</label>
+            <textarea id="note" rows="3" placeholder="Eventuali commenti o osservazioni..."></textarea>
+        </div>
+
+        <button type="submit" id="submitBtn">Invia Scheda di Degustazione</button>
+    </form>
+
+    <div id="successMessage" class="success-msg">
+        Scheda inviata con successo! Grazie per la valutazione.
+    </div>
+</div>
+
+<script>
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbz3sCQGgsuAKKJ1XUdeB6XOMa_JFfEkSvrr3HI2gouFQFTJuOZZd_7UZbHYc-tk31PC/exec";
+
+    document.getElementById('degustazioneForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const btn = document.getElementById('submitBtn');
+        btn.disabled = true;
+        btn.textContent = "Invio in corso...";
+
+        const getRadioVal = (name) => {
+            const el = document.querySelector(`input[name="${name}"]:checked`);
+            return el ? el.value : "";
+        };
+
+        const dati = {
+            timestamp: new Date().toISOString(),
+            versione_birra: document.getElementById('versione_birra').value,
+            nome: document.getElementById('nome').value,
+            aspetto_si_no: getRadioVal('aspetto_si_no'),
+            aspetto_voto: getRadioVal('aspetto_voto'),
+            profumo_floreale_tipo: getRadioVal('profumo_floreale_tipo'),
+            profumo_floreale_voto: getRadioVal('profumo_floreale_voto'),
+            profumo_fruttato_tipo: getRadioVal('profumo_fruttato_tipo'),
+            profumo_fruttato_voto: getRadioVal('profumo_fruttato_voto'),
+            corposita_tipo: getRadioVal('corposita_tipo'),
+            corposita_voto: getRadioVal('corposita_voto'),
+            gusto_fruttato_tipo: getRadioVal('gusto_fruttato_tipo'),
+            gusto_fruttato_voto: getRadioVal('gusto_fruttato_voto'),
+            retrogusto: getRadioVal('retrogusto'),
+            retrogusto_voto: getRadioVal('retrogusto_voto'),
+            abbastanza_bargnolinosa: getRadioVal('abbastanza_bargnolinosa'),
+            compreresti: getRadioVal('compreresti'),
+            prezzo_disposto: getRadioVal('prezzo_disposto'),
+            note: document.getElementById('note').value
+        };
+
+        fetch(WEB_APP_URL, {
+            method: 'POST',
+            body: JSON.stringify(dati)
+        })
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('degustazioneForm').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+        })
+        .catch(error => {
+            console.error('Errore:', error);
+            alert("Errore durante l'invio dei dati. Riprova.");
+            btn.disabled = false;
+            btn.textContent = "Invia Scheda di Degustazione";
+        });
+    });
+</script>
+
+</body>
+</html>

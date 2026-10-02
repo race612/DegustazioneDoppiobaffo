@@ -33,7 +33,7 @@
             background-color: var(--bg);
             color: var(--text-main);
             margin: 0;
-            padding: 28px 16px;
+            padding: 20px 10px;
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
         }
@@ -43,7 +43,7 @@
             max-width: 780px;
             background: var(--surface);
             margin: 0 auto;
-            padding: 40px 32px;
+            padding: 20px 12px;
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
             border: 1px solid var(--border);
@@ -457,7 +457,7 @@
     <form id="degustazioneForm">
         
         <div class="card-highlight">
-            <label class="question" for="versione_birra">Seleziona la versione che stai assaggiando *</label>
+            <label class="question" for="versione_birra">Seleziona la versione che stai assaggiando*</label>
             <select id="versione_birra" required onchange="controllaDuplicato()">
                 <option value="">-- Scegli la versione --</option>
                 <option value="Versione A">Versione A</option>
@@ -468,7 +468,7 @@
         </div>
 
         <div class="section">
-            <label class="question" for="nome">Nome Assaggiatore *</label>
+            <label class="question" for="nome">Nome Assaggiatore*</label>
             <input type="text" id="nome" placeholder="Il tuo nome o nickname" required onblur="controllaDuplicato()">
         </div>
 
@@ -526,7 +526,7 @@
                 <div class="slider-ticks-container">
                     <div class="slider-ticks-track">
                         <span class="slider-tick" style="left: 0%;">Limpida</span>
-                        <span class="slider-tick" style="left: 33.333%;">Legg. velata</span>
+                        <span class="slider-tick" style="left: 33.333%;">Leggerm. velata</span>
                         <span class="slider-tick" style="left: 66.666%;">Velata</span>
                         <span class="slider-tick" style="left: 100%;">Torbida</span>
                     </div>
@@ -536,7 +536,7 @@
             <!-- 4. Aspetto (Gradimento rosato) -->
             <div class="slider-box" style="margin-top: 22px; border-top: 1px dashed var(--border); padding-top: 18px;">
                 <div class="slider-header">
-                    <span class="slider-title">Gradimento aspetto rosato</span>
+                    <span class="slider-title">Gradimento aspetto generale</span>
                     <span class="slider-badge" id="badge_aspetto_rosato">Voto: 2 / 5</span>
                 </div>
                 <div class="slider-input-wrapper">
@@ -556,7 +556,7 @@
 
         <!-- MACROAREA 2: Esame Olfattivo (Aroma) -->
         <div class="section">
-            <h2 class="section-title">Esame Olfattivo (Aroma)</h2>
+            <h2 class="section-title">Aroma</h2>
 
             <!-- A. Malto -->
             <div class="subsection-block">
@@ -650,7 +650,7 @@
 
             <!-- C. Fermentazione -->
             <div class="subsection-block">
-                <h3 class="subsection-title">3. Fermentazione</h3>
+                <h3 class="subsection-title">3. Fermentazione (caratteristiche derivanti da lievito e batteri)</h3>
                 
                 <!-- Intensità -->
                 <div class="slider-box">

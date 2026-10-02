@@ -877,29 +877,111 @@
                     </div>
                 </div>
             </div>
+
+            <!-- E. Bilanciamento -->
+            <div class="subsection-block">
+                <h3 class="subsection-title">5. Bilanciamento</h3>
+                <div class="slider-box">
+                    <div class="slider-header">
+                        <span class="slider-title">Profilo</span>
+                        <span class="slider-badge" id="badge_bilanciamento">Equilibrata</span>
+                    </div>
+                    <div class="slider-input-wrapper">
+                        <input type="range" id="gusto_bilanciamento" min="0" max="4" step="1" value="2" oninput="aggiornaSliderBilanciamento()">
+                    </div>
+                    <div class="slider-ticks-container">
+                        <div class="slider-ticks-track">
+                            <span class="slider-tick" style="left: 0%;">Dolce</span>
+                            <span class="slider-tick" style="left: 25%;">Legg. dolce</span>
+                            <span class="slider-tick" style="left: 50%;">Equilibrata</span>
+                            <span class="slider-tick" style="left: 75%;">Legg. amara</span>
+                            <span class="slider-tick" style="left: 100%;">Amara</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- 3. Corposità -->
+        <!-- MACROAREA 4: Sensazioni Boccali -->
         <div class="section">
-            <label class="question">3. Corposità</label>
-            <div class="options-group">
-                <label><input type="radio" name="corposita_tipo" value="ACQUOSA"> Acquosa</label>
-                <label><input type="radio" name="corposita_tipo" value="MEDIO CORPO"> Medio corpo</label>
-                <label><input type="radio" name="corposita_tipo" value="MOLTO CORPOSA"> Molto corposa</label>
+            <h2 class="section-title">Sensazioni Boccali</h2>
+
+            <!-- 1. Corpo -->
+            <div class="slider-box">
+                <div class="slider-header">
+                    <span class="slider-title">Corpo</span>
+                    <span class="slider-badge" id="badge_bocca_corpo">Medio</span>
+                </div>
+                <div class="slider-input-wrapper">
+                    <input type="range" id="bocca_corpo" min="0" max="2" step="1" value="1" oninput="aggiornaSliderBoccali('corpo')">
+                </div>
+                <div class="slider-ticks-container">
+                    <div class="slider-ticks-track">
+                        <span class="slider-tick" style="left: 0%;">Esile</span>
+                        <span class="slider-tick" style="left: 50%;">Medio</span>
+                        <span class="slider-tick" style="left: 100%;">Pieno</span>
+                    </div>
+                </div>
             </div>
-            <span class="helper-text" style="margin-top:14px;">Valuta gradimento da 1 a 5:</span>
-            <div class="scale-group">
-                <label><input type="radio" name="corposita_voto" value="1"><br>1</label>
-                <label><input type="radio" name="corposita_voto" value="2"><br>2</label>
-                <label><input type="radio" name="corposita_voto" value="3"><br>3</label>
-                <label><input type="radio" name="corposita_voto" value="4"><br>4</label>
-                <label><input type="radio" name="corposita_voto" value="5"><br>5</label>
+
+            <!-- 2. Carbonazione -->
+            <div class="slider-box">
+                <div class="slider-header">
+                    <span class="slider-title">Carbonazione</span>
+                    <span class="slider-badge" id="badge_bocca_carbonazione">Media</span>
+                </div>
+                <div class="slider-input-wrapper">
+                    <input type="range" id="bocca_carbonazione" min="0" max="2" step="1" value="1" oninput="aggiornaSliderBoccali('carbonazione')">
+                </div>
+                <div class="slider-ticks-container">
+                    <div class="slider-ticks-track">
+                        <span class="slider-tick" style="left: 0%;">Bassa</span>
+                        <span class="slider-tick" style="left: 50%;">Media</span>
+                        <span class="slider-tick" style="left: 100%;">Alta</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Astringenza -->
+            <div class="slider-box">
+                <div class="slider-header">
+                    <span class="slider-title">Astringenza</span>
+                    <span class="slider-badge" id="badge_bocca_astringenza">No</span>
+                </div>
+                <div class="slider-input-wrapper">
+                    <input type="range" id="bocca_astringenza" min="0" max="2" step="1" value="0" oninput="aggiornaSliderBoccali('astringenza')">
+                </div>
+                <div class="slider-ticks-container">
+                    <div class="slider-ticks-track">
+                        <span class="slider-tick" style="left: 0%;">No</span>
+                        <span class="slider-tick" style="left: 50%;">Leggera</span>
+                        <span class="slider-tick" style="left: 100%;">Fastidiosa</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Calore alcolico -->
+            <div class="slider-box">
+                <div class="slider-header">
+                    <span class="slider-title">Calore alcolico</span>
+                    <span class="slider-badge" id="badge_bocca_calore_alcolico">No</span>
+                </div>
+                <div class="slider-input-wrapper">
+                    <input type="range" id="bocca_calore_alcolico" min="0" max="2" step="1" value="0" oninput="aggiornaSliderBoccali('calore_alcolico')">
+                </div>
+                <div class="slider-ticks-container">
+                    <div class="slider-ticks-track">
+                        <span class="slider-tick" style="left: 0%;">No</span>
+                        <span class="slider-tick" style="left: 50%;">Leggero</span>
+                        <span class="slider-tick" style="left: 100%;">Fastidioso</span>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- 4. Gusto Fruttato -->
+        <!-- Gusto Fruttato -->
         <div class="section">
-            <label class="question">4. Gusto Fruttato</label>
+            <label class="question">Gusto Fruttato</label>
             <div class="options-group">
                 <label><input type="radio" name="gusto_fruttato_tipo" value="ASSENTE"> Assente</label>
                 <label><input type="radio" name="gusto_fruttato_tipo" value="DELICATO"> Delicato</label>
@@ -916,9 +998,9 @@
             </div>
         </div>
 
-        <!-- 5. Retrogusto -->
+        <!-- Note Descrittive Retrogusto -->
         <div class="section">
-            <label class="question">5. Retrogusto (puoi selezionare più elementi)</label>
+            <label class="question">Note Descrittive Retrogusto (puoi selezionare più elementi)</label>
             <div class="options-group">
                 <label><input type="checkbox" name="retrogusto" value="MALTATO"> Maltato</label>
                 <label><input type="checkbox" name="retrogusto" value="AMARO"> Amaro</label>
@@ -926,7 +1008,7 @@
                 <label><input type="checkbox" name="retrogusto" value="SPEZIATO"> Speziato</label>
                 <label><input type="checkbox" name="retrogusto" value="ALTRO"> Altro</label>
             </div>
-            <span class="helper-text" style="margin-top:14px;">Valuta gradimento da 1 a 5:</span>
+            <span class="helper-text" style="margin-top:14px;">Valuta gradimento complessivo retrogusto da 1 a 5:</span>
             <div class="scale-group">
                 <label><input type="radio" name="retrogusto_voto" value="1"><br>1</label>
                 <label><input type="radio" name="retrogusto_voto" value="2"><br>2</label>
@@ -936,18 +1018,18 @@
             </div>
         </div>
 
-        <!-- 6. Valutazioni Finali -->
+        <!-- Valutazioni Finali -->
         <div class="section">
-            <label class="question">6. Secondo te, è abbastanza bargnolinosa?</label>
+            <label class="question">Secondo te, è abbastanza bargnolinosa?</label>
             <div class="radio-group">
                 <label><input type="radio" name="abbastanza_bargnolinosa" value="SI"> SI</label>
                 <label><input type="radio" name="abbastanza_bargnolinosa" value="NO"> NO</label>
             </div>
         </div>
 
-        <!-- 7. Intento d'acquisto e prezzo condizionale -->
+        <!-- Intento d'acquisto e prezzo condizionale -->
         <div class="section">
-            <label class="question">7. La compreresti?</label>
+            <label class="question">La compreresti?</label>
             <div class="radio-group">
                 <label><input type="radio" name="compreresti" value="SI" onclick="togglePrezzo(true)"> SI</label>
                 <label><input type="radio" name="compreresti" value="NO" onclick="togglePrezzo(false)"> NO</label>
@@ -1000,6 +1082,14 @@
     };
 
     const livelliIntensita = ["bassa", "medio-bassa", "media", "medio-alta", "alta"];
+    const livelliBilanciamento = ["Dolce", "Leggermente dolce", "Equilibrata", "Leggermente amara", "Amara"];
+
+    const mappeBoccali = {
+        corpo: ["Esile", "Medio", "Pieno"],
+        carbonazione: ["Bassa", "Media", "Alta"],
+        astringenza: ["No", "Leggera", "Fastidiosa"],
+        calore_alcolico: ["No", "Leggero", "Fastidioso"]
+    };
 
     function aggiornaSliderVisivo(tipo) {
         const slider = document.getElementById(`visivo_${tipo}`);
@@ -1024,6 +1114,20 @@
         if (badge) {
             badge.textContent = `${slider.value} / 5`;
         }
+    }
+
+    function aggiornaSliderBilanciamento() {
+        const slider = document.getElementById('gusto_bilanciamento');
+        const badge = document.getElementById('badge_bilanciamento');
+        const valIndex = parseInt(slider.value, 10);
+        badge.textContent = livelliBilanciamento[valIndex];
+    }
+
+    function aggiornaSliderBoccali(chiave) {
+        const slider = document.getElementById(`bocca_${chiave}`);
+        const badge = document.getElementById(`badge_bocca_${chiave}`);
+        const valIndex = parseInt(slider.value, 10);
+        badge.textContent = mappeBoccali[chiave][valIndex];
     }
 
     function normalizzaNome(nome) {
@@ -1138,10 +1242,16 @@
 
             gusto_retrogusto_intensita: livelliIntensita[parseInt(document.getElementById('gusto_retrogusto_int').value, 10)],
             gusto_retrogusto_piacevolezza: document.getElementById('gusto_retrogusto_piac').value,
+
+            gusto_bilanciamento: livelliBilanciamento[parseInt(document.getElementById('gusto_bilanciamento').value, 10)],
             
+            // Sensazioni Boccali
+            bocca_corpo: mappeBoccali.corpo[parseInt(document.getElementById('bocca_corpo').value, 10)],
+            bocca_carbonazione: mappeBoccali.carbonazione[parseInt(document.getElementById('bocca_carbonazione').value, 10)],
+            bocca_astringenza: mappeBoccali.astringenza[parseInt(document.getElementById('bocca_astringenza').value, 10)],
+            bocca_calore_alcolico: mappeBoccali.calore_alcolico[parseInt(document.getElementById('bocca_calore_alcolico').value, 10)],
+
             // Altri parametri degustazione
-            corposita_tipo: getRadioVal('corposita_tipo'),
-            corposita_voto: getRadioVal('corposita_voto'),
             gusto_fruttato_tipo: getRadioVal('gusto_fruttato_tipo'),
             gusto_fruttato_voto: getRadioVal('gusto_fruttato_voto'),
             retrogusto: getCheckboxesVal('retrogusto'),

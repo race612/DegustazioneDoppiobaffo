@@ -21,6 +21,7 @@
             --radius-sm: 6px;
             --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
             --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+            --thumb-size: 22px;
         }
 
         * {
@@ -47,21 +48,29 @@
             border: 1px solid var(--border);
         }
 
-        /* Loghi */
-        .logos-container {
+        /* Loghi ingranditi all'80% della larghezza */
+        .logos-wrapper {
             display: flex;
             justify-content: center;
+            width: 100%;
+            margin-bottom: 28px;
+        }
+
+        .logos-container {
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 20px;
-            margin-bottom: 24px;
+            gap: 16px;
         }
 
         .logo-item {
-            width: 76px;
-            height: 76px;
+            flex: 1;
+            aspect-ratio: 1 / 1;
+            max-height: 130px;
             background: #ffffff;
             border-radius: var(--radius-md);
-            padding: 6px;
+            padding: 10px;
             border: 1px solid var(--border);
             box-shadow: var(--shadow-sm);
             display: flex;
@@ -134,7 +143,6 @@
             display: block;
         }
 
-        /* Input generici */
         input[type="text"], select, textarea {
             width: 100%;
             padding: 12px 14px;
@@ -153,7 +161,7 @@
             box-shadow: 0 0 0 3px rgba(196, 113, 22, 0.15);
         }
 
-        /* Slider orizzontali */
+        /* Slider moderni con allineamento preciso delle etichette */
         .slider-box {
             margin-bottom: 24px;
         }
@@ -166,7 +174,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .slider-title {
@@ -188,7 +196,7 @@
 
         .slider-input-wrapper {
             position: relative;
-            padding: 0 4px;
+            width: 100%;
         }
 
         input[type="range"] {
@@ -199,15 +207,16 @@
             background: #e2e8f0;
             border-radius: 4px;
             outline: none;
-            margin: 12px 0 8px 0;
+            margin: 12px 0 10px 0;
             cursor: pointer;
+            display: block;
         }
 
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 22px;
-            height: 22px;
+            width: var(--thumb-size);
+            height: var(--thumb-size);
             border-radius: 50%;
             background: var(--primary);
             border: 3px solid #ffffff;
@@ -216,8 +225,8 @@
         }
 
         input[type="range"]::-moz-range-thumb {
-            width: 22px;
-            height: 22px;
+            width: var(--thumb-size);
+            height: var(--thumb-size);
             border-radius: 50%;
             background: var(--primary);
             border: 3px solid #ffffff;
@@ -229,24 +238,32 @@
             background: var(--primary-dark);
         }
 
-        .slider-labels {
-            display: flex;
-            justify-content: space-between;
-            padding: 0 2px;
+        /* Contenitore etichette posizionato in corrispondenza esatta del centro del pollice */
+        .slider-ticks-container {
+            position: relative;
+            width: 100%;
+            height: 22px;
         }
 
-        .slider-labels span {
+        .slider-ticks-track {
+            position: absolute;
+            left: calc(var(--thumb-size) / 2);
+            right: calc(var(--thumb-size) / 2);
+            top: 0;
+            bottom: 0;
+        }
+
+        .slider-tick {
+            position: absolute;
+            transform: translateX(-50%);
             font-size: 0.76rem;
             color: var(--text-muted);
+            white-space: nowrap;
+            user-select: none;
             text-transform: capitalize;
-            text-align: center;
-            flex: 1;
         }
 
-        .slider-labels span:first-child { text-align: left; }
-        .slider-labels span:last-child { text-align: right; }
-
-        /* Gruppi e scale */
+        /* Gruppi di opzioni e scale */
         .options-group, .radio-group {
             display: flex;
             flex-wrap: wrap;
@@ -388,16 +405,18 @@
 <body>
 
 <div class="container">
-    <!-- Loghi ordinati: HBL, doppiobaffo, ubt -->
-    <div class="logos-container">
-        <div class="logo-item">
-            <img src="hbl.png" alt="Logo HBL" onerror="this.parentElement.style.display='none'">
-        </div>
-        <div class="logo-item">
-            <img src="doppiobaffo.png" alt="Logo Doppiobaffo" onerror="this.parentElement.style.display='none'">
-        </div>
-        <div class="logo-item">
-            <img src="ubt.png" alt="Logo UBT" onerror="this.parentElement.style.display='none'">
+    <!-- Loghi con larghezza complessiva dell'80% -->
+    <div class="logos-wrapper">
+        <div class="logos-container">
+            <div class="logo-item">
+                <img src="hbl.png" alt="Logo HBL" onerror="this.parentElement.style.display='none'">
+            </div>
+            <div class="logo-item">
+                <img src="doppiobaffo.png" alt="Logo Doppiobaffo" onerror="this.parentElement.style.display='none'">
+            </div>
+            <div class="logo-item">
+                <img src="ubt.png" alt="Logo UBT" onerror="this.parentElement.style.display='none'">
+            </div>
         </div>
     </div>
 
@@ -424,71 +443,84 @@
             <input type="text" id="nome" placeholder="Il tuo nome o nickname" required onblur="controllaDuplicato()">
         </div>
 
-        <!-- MACROAREA: Esame Visivo (con slider orizzontali, no punteggio, no hazy) -->
+        <!-- MACROAREA: Esame Visivo riordinato (Schiuma, Persistenza, Limpidezza, Aspetto) con default sul 2° punto -->
         <div class="section">
             <label class="question">Esame Visivo</label>
             
-            <!-- Slider Limpidezza (senza hazy) -->
-            <div class="slider-box">
-                <div class="slider-header">
-                    <span class="slider-title">Limpidezza</span>
-                    <span class="slider-badge" id="badge_limpidezza">Limpida</span>
-                </div>
-                <div class="slider-input-wrapper">
-                    <input type="range" id="visivo_limpidezza" min="0" max="3" step="1" value="0" oninput="aggiornaSliderVisivo('limpidezza')">
-                </div>
-                <div class="slider-labels">
-                    <span>Limpida</span>
-                    <span>Legg. velata</span>
-                    <span>Velata</span>
-                    <span>Torbida</span>
-                </div>
-            </div>
-
-            <!-- Slider Schiuma -->
+            <!-- 1. Quantità Schiuma (default indice 1: Scarsa) -->
             <div class="slider-box">
                 <div class="slider-header">
                     <span class="slider-title">Quantità Schiuma</span>
-                    <span class="slider-badge" id="badge_schiuma">Media</span>
+                    <span class="slider-badge" id="badge_schiuma">Scarsa</span>
                 </div>
                 <div class="slider-input-wrapper">
-                    <input type="range" id="visivo_schiuma" min="0" max="3" step="1" value="2" oninput="aggiornaSliderVisivo('schiuma')">
+                    <input type="range" id="visivo_schiuma" min="0" max="3" step="1" value="1" oninput="aggiornaSliderVisivo('schiuma')">
                 </div>
-                <div class="slider-labels">
-                    <span>Assente</span>
-                    <span>Scarsa</span>
-                    <span>Media</span>
-                    <span>Abbondante</span>
+                <div class="slider-ticks-container">
+                    <div class="slider-ticks-track">
+                        <span class="slider-tick" style="left: 0%;">Assente</span>
+                        <span class="slider-tick" style="left: 33.333%;">Scarsa</span>
+                        <span class="slider-tick" style="left: 66.666%;">Media</span>
+                        <span class="slider-tick" style="left: 100%;">Abbondante</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Slider Persistenza Schiuma -->
+            <!-- 2. Persistenza Schiuma (default indice 1: Breve) -->
             <div class="slider-box">
                 <div class="slider-header">
                     <span class="slider-title">Persistenza Schiuma</span>
-                    <span class="slider-badge" id="badge_persistenza">Media</span>
+                    <span class="slider-badge" id="badge_persistenza">Breve</span>
                 </div>
                 <div class="slider-input-wrapper">
-                    <input type="range" id="visivo_persistenza" min="0" max="3" step="1" value="2" oninput="aggiornaSliderVisivo('persistenza')">
+                    <input type="range" id="visivo_persistenza" min="0" max="3" step="1" value="1" oninput="aggiornaSliderVisivo('persistenza')">
                 </div>
-                <div class="slider-labels">
-                    <span>Evanescente</span>
-                    <span>Breve</span>
-                    <span>Media</span>
-                    <span>Lunga</span>
+                <div class="slider-ticks-container">
+                    <div class="slider-ticks-track">
+                        <span class="slider-tick" style="left: 0%;">Evanescente</span>
+                        <span class="slider-tick" style="left: 33.333%;">Breve</span>
+                        <span class="slider-tick" style="left: 66.666%;">Media</span>
+                        <span class="slider-tick" style="left: 100%;">Lunga</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Gradimento aspetto rosato -->
-            <div style="margin-top: 20px; border-top: 1px dashed var(--border); padding-top: 16px;">
-                <label class="question" style="font-size:0.95rem; margin-bottom: 4px;">Quanto ti piace l'aspetto rosato della birra? *</label>
-                <span class="helper-text">Valuta da 1 (non mi piace) a 5 (mi piace molto):</span>
-                <div class="scale-group">
-                    <label><input type="radio" name="aspetto_rosato_voto" value="1" required><br>1</label>
-                    <label><input type="radio" name="aspetto_rosato_voto" value="2"><br>2</label>
-                    <label><input type="radio" name="aspetto_rosato_voto" value="3"><br>3</label>
-                    <label><input type="radio" name="aspetto_rosato_voto" value="4"><br>4</label>
-                    <label><input type="radio" name="aspetto_rosato_voto" value="5"><br>5</label>
+            <!-- 3. Limpidezza (default indice 1: Leggermente velata) -->
+            <div class="slider-box">
+                <div class="slider-header">
+                    <span class="slider-title">Limpidezza</span>
+                    <span class="slider-badge" id="badge_limpidezza">Leggermente velata</span>
+                </div>
+                <div class="slider-input-wrapper">
+                    <input type="range" id="visivo_limpidezza" min="0" max="3" step="1" value="1" oninput="aggiornaSliderVisivo('limpidezza')">
+                </div>
+                <div class="slider-ticks-container">
+                    <div class="slider-ticks-track">
+                        <span class="slider-tick" style="left: 0%;">Limpida</span>
+                        <span class="slider-tick" style="left: 33.333%;">Legg. velata</span>
+                        <span class="slider-tick" style="left: 66.666%;">Velata</span>
+                        <span class="slider-tick" style="left: 100%;">Torbida</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Aspetto (Gradimento rosato via Slider, default valore 2) -->
+            <div class="slider-box" style="margin-top: 22px; border-top: 1px dashed var(--border); padding-top: 18px;">
+                <div class="slider-header">
+                    <span class="slider-title">Gradimento aspetto rosato</span>
+                    <span class="slider-badge" id="badge_aspetto_rosato">Voto: 2 / 5</span>
+                </div>
+                <div class="slider-input-wrapper">
+                    <input type="range" id="aspetto_rosato_voto" min="1" max="5" step="1" value="2" oninput="aggiornaSliderVoto('aspetto_rosato')">
+                </div>
+                <div class="slider-ticks-container">
+                    <div class="slider-ticks-track">
+                        <span class="slider-tick" style="left: 0%;">1 (Poco)</span>
+                        <span class="slider-tick" style="left: 25%;">2</span>
+                        <span class="slider-tick" style="left: 50%;">3</span>
+                        <span class="slider-tick" style="left: 75%;">4</span>
+                        <span class="slider-tick" style="left: 100%;">5 (Molto)</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -645,11 +677,10 @@
 <script>
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbz3sCQGgsuAKKJ1XUdeB6XOMa_JFfEkSvrr3HI2gouFQFTJuOZZd_7UZbHYc-tk31PC/exec";
 
-    // Valori testuali per gli slider discreti
     const mappeValori = {
-        limpidezza: ["limpida", "leggermente velata", "velata", "torbida"],
         schiuma: ["assente", "scarsa", "media", "abbondante"],
-        persistenza: ["evanescente", "breve", "media", "lunga"]
+        persistenza: ["evanescente", "breve", "media", "lunga"],
+        limpidezza: ["limpida", "leggermente velata", "velata", "torbida"]
     };
 
     function aggiornaSliderVisivo(tipo) {
@@ -658,6 +689,12 @@
         const valIndex = parseInt(slider.value, 10);
         const testo = mappeValori[tipo][valIndex];
         badge.textContent = testo.charAt(0).toUpperCase() + testo.slice(1);
+    }
+
+    function aggiornaSliderVoto(tipo) {
+        const slider = document.getElementById(`${tipo}_voto`);
+        const badge = document.getElementById(`badge_${tipo}`);
+        badge.textContent = `Voto: ${slider.value} / 5`;
     }
 
     function normalizzaNome(nome) {
@@ -735,18 +772,18 @@
             return values.join(', ');
         };
 
-        const limpIndex = parseInt(document.getElementById('visivo_limpidezza').value, 10);
         const schiIndex = parseInt(document.getElementById('visivo_schiuma').value, 10);
         const persIndex = parseInt(document.getElementById('visivo_persistenza').value, 10);
+        const limpIndex = parseInt(document.getElementById('visivo_limpidezza').value, 10);
 
         const dati = {
             timestamp: new Date().toISOString(),
             versione_birra: versione,
             nome: nomeRaw.trim(),
-            visivo_limpidezza: mappeValori.limpidezza[limpIndex],
             visivo_schiuma: mappeValori.schiuma[schiIndex],
             visivo_persistenza: mappeValori.persistenza[persIndex],
-            aspetto_rosato_voto: getRadioVal('aspetto_rosato_voto'),
+            visivo_limpidezza: mappeValori.limpidezza[limpIndex],
+            aspetto_rosato_voto: document.getElementById('aspetto_rosato_voto').value,
             profumo_floreale_tipo: getRadioVal('profumo_floreale_tipo'),
             profumo_floreale_voto: getRadioVal('profumo_floreale_voto'),
             profumo_fruttato_tipo: getRadioVal('profumo_fruttato_tipo'),

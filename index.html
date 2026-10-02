@@ -33,16 +33,17 @@
             background-color: var(--bg);
             color: var(--text-main);
             margin: 0;
-            padding: 24px 16px;
+            padding: 28px 16px;
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
         }
 
+        /* Contenitore più largo per evitare sovrapposizioni nelle etichette */
         .container {
-            max-width: 680px;
+            max-width: 780px;
             background: var(--surface);
             margin: 0 auto;
-            padding: 36px 28px;
+            padding: 40px 32px;
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
             border: 1px solid var(--border);
@@ -61,13 +62,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 16px;
+            gap: 18px;
         }
 
         .logo-item {
             flex: 1;
             aspect-ratio: 1 / 1;
-            max-height: 130px;
+            max-height: 140px;
             background: #ffffff;
             border-radius: var(--radius-md);
             padding: 10px;
@@ -86,7 +87,7 @@
         }
 
         h1 {
-            font-size: 1.6rem;
+            font-size: 1.65rem;
             color: var(--text-main);
             text-align: center;
             margin: 0 0 10px 0;
@@ -101,14 +102,14 @@
             margin-bottom: 28px;
             line-height: 1.55;
             background: var(--primary-light);
-            padding: 14px 18px;
+            padding: 14px 20px;
             border-radius: var(--radius-md);
             border: 1px solid #fed7aa;
         }
 
         .card-highlight {
             background: #fffdfa;
-            padding: 20px;
+            padding: 22px;
             border-radius: var(--radius-md);
             border: 1.5px solid #fde68a;
             margin-bottom: 22px;
@@ -116,16 +117,48 @@
 
         .section {
             background: var(--surface);
-            margin-bottom: 18px;
+            margin-bottom: 22px;
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
-            padding: 20px;
+            padding: 24px;
             transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         .section:focus-within {
             border-color: #cbd5e1;
             box-shadow: var(--shadow-sm);
+        }
+
+        .section-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 0;
+            margin-bottom: 18px;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 8px;
+        }
+
+        .subsection-block {
+            padding: 14px 0;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .subsection-block:last-child {
+            border-bottom: none;
+            padding-bottom: 4px;
+        }
+
+        .subsection-title {
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin: 0 0 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         label.question {
@@ -161,34 +194,34 @@
             box-shadow: 0 0 0 3px rgba(196, 113, 22, 0.15);
         }
 
-        /* Slider moderni con allineamento preciso delle etichette */
+        /* Slider moderni */
         .slider-box {
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .slider-box:last-child {
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .slider-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .slider-title {
-            font-size: 0.92rem;
+            font-size: 0.9rem;
             font-weight: 600;
             color: var(--text-main);
         }
 
         .slider-badge {
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             font-weight: 700;
             background: var(--primary-light);
             color: var(--primary-dark);
-            padding: 4px 10px;
+            padding: 3px 9px;
             border-radius: 20px;
             border: 1px solid #fbd38d;
             text-transform: capitalize;
@@ -207,7 +240,7 @@
             background: #e2e8f0;
             border-radius: 4px;
             outline: none;
-            margin: 12px 0 10px 0;
+            margin: 10px 0 8px 0;
             cursor: pointer;
             display: block;
         }
@@ -238,11 +271,11 @@
             background: var(--primary-dark);
         }
 
-        /* Contenitore etichette posizionato in corrispondenza esatta del centro del pollice */
+        /* Contenitore etichette per allineamento preciso con il thumb */
         .slider-ticks-container {
             position: relative;
             width: 100%;
-            height: 22px;
+            height: 20px;
         }
 
         .slider-ticks-track {
@@ -256,14 +289,13 @@
         .slider-tick {
             position: absolute;
             transform: translateX(-50%);
-            font-size: 0.76rem;
+            font-size: 0.74rem;
             color: var(--text-muted);
             white-space: nowrap;
             user-select: none;
             text-transform: capitalize;
         }
 
-        /* Gruppi di opzioni e scale */
         .options-group, .radio-group {
             display: flex;
             flex-wrap: wrap;
@@ -313,7 +345,6 @@
             background: #e2e8f0;
         }
 
-        /* Bottone submit */
         button[type="submit"] {
             background-color: var(--primary);
             color: #ffffff;
@@ -362,7 +393,6 @@
             border-top: 1px dashed var(--border);
         }
 
-        /* Modale Duplicati */
         #duplicateModal {
             display: none;
             position: fixed;
@@ -405,7 +435,6 @@
 <body>
 
 <div class="container">
-    <!-- Loghi con larghezza complessiva dell'80% -->
     <div class="logos-wrapper">
         <div class="logos-container">
             <div class="logo-item">
@@ -443,11 +472,11 @@
             <input type="text" id="nome" placeholder="Il tuo nome o nickname" required onblur="controllaDuplicato()">
         </div>
 
-        <!-- MACROAREA: Esame Visivo riordinato (Schiuma, Persistenza, Limpidezza, Aspetto) con default sul 2° punto -->
+        <!-- MACROAREA 1: Esame Visivo -->
         <div class="section">
-            <label class="question">Esame Visivo</label>
+            <h2 class="section-title">Esame Visivo</h2>
             
-            <!-- 1. Quantità Schiuma (default indice 1: Scarsa) -->
+            <!-- 1. Quantità Schiuma -->
             <div class="slider-box">
                 <div class="slider-header">
                     <span class="slider-title">Quantità Schiuma</span>
@@ -466,7 +495,7 @@
                 </div>
             </div>
 
-            <!-- 2. Persistenza Schiuma (default indice 1: Breve) -->
+            <!-- 2. Persistenza Schiuma -->
             <div class="slider-box">
                 <div class="slider-header">
                     <span class="slider-title">Persistenza Schiuma</span>
@@ -485,7 +514,7 @@
                 </div>
             </div>
 
-            <!-- 3. Limpidezza (default indice 1: Leggermente velata) -->
+            <!-- 3. Limpidezza -->
             <div class="slider-box">
                 <div class="slider-header">
                     <span class="slider-title">Limpidezza</span>
@@ -504,7 +533,7 @@
                 </div>
             </div>
 
-            <!-- 4. Aspetto (Gradimento rosato via Slider, default valore 2) -->
+            <!-- 4. Aspetto (Gradimento rosato) -->
             <div class="slider-box" style="margin-top: 22px; border-top: 1px dashed var(--border); padding-top: 18px;">
                 <div class="slider-header">
                     <span class="slider-title">Gradimento aspetto rosato</span>
@@ -525,47 +554,194 @@
             </div>
         </div>
 
-        <!-- 2. Profumo Floreale -->
+        <!-- MACROAREA 2: Esame Olfattivo (Aroma) -->
         <div class="section">
-            <label class="question">2. Profumo Floreale</label>
-            <div class="options-group">
-                <label><input type="radio" name="profumo_floreale_tipo" value="ASSENTE"> Assente</label>
-                <label><input type="radio" name="profumo_floreale_tipo" value="DELICATO"> Delicato</label>
-                <label><input type="radio" name="profumo_floreale_tipo" value="MEDIO"> Medio</label>
-                <label><input type="radio" name="profumo_floreale_tipo" value="INTENSO"> Intenso</label>
+            <h2 class="section-title">Esame Olfattivo (Aroma)</h2>
+
+            <!-- A. Malto -->
+            <div class="subsection-block">
+                <h3 class="subsection-title">1. Malto</h3>
+                
+                <!-- Intensità -->
+                <div class="slider-box">
+                    <div class="slider-header">
+                        <span class="slider-title">Intensità</span>
+                        <span class="slider-badge" id="badge_aroma_malto_int">Medio-bassa</span>
+                    </div>
+                    <div class="slider-input-wrapper">
+                        <input type="range" id="aroma_malto_int" min="0" max="4" step="1" value="1" oninput="aggiornaSliderIntensita('aroma_malto')">
+                    </div>
+                    <div class="slider-ticks-container">
+                        <div class="slider-ticks-track">
+                            <span class="slider-tick" style="left: 0%;">Bassa</span>
+                            <span class="slider-tick" style="left: 25%;">Medio-bassa</span>
+                            <span class="slider-tick" style="left: 50%;">Media</span>
+                            <span class="slider-tick" style="left: 75%;">Medio-alta</span>
+                            <span class="slider-tick" style="left: 100%;">Alta</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Piacevolezza -->
+                <div class="slider-box">
+                    <div class="slider-header">
+                        <span class="slider-title">Piacevolezza</span>
+                        <span class="slider-badge" id="badge_aroma_malto_piac">Voto: 2 / 5</span>
+                    </div>
+                    <div class="slider-input-wrapper">
+                        <input type="range" id="aroma_malto_piac" min="1" max="5" step="1" value="2" oninput="aggiornaSliderVoto('aroma_malto_piac')">
+                    </div>
+                    <div class="slider-ticks-container">
+                        <div class="slider-ticks-track">
+                            <span class="slider-tick" style="left: 0%;">1 (Poco)</span>
+                            <span class="slider-tick" style="left: 25%;">2</span>
+                            <span class="slider-tick" style="left: 50%;">3</span>
+                            <span class="slider-tick" style="left: 75%;">4</span>
+                            <span class="slider-tick" style="left: 100%;">5 (Molto)</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <span class="helper-text" style="margin-top:14px;">Valuta gradimento da 1 a 5:</span>
-            <div class="scale-group">
-                <label><input type="radio" name="profumo_floreale_voto" value="1"><br>1</label>
-                <label><input type="radio" name="profumo_floreale_voto" value="2"><br>2</label>
-                <label><input type="radio" name="profumo_floreale_voto" value="3"><br>3</label>
-                <label><input type="radio" name="profumo_floreale_voto" value="4"><br>4</label>
-                <label><input type="radio" name="profumo_floreale_voto" value="5"><br>5</label>
+
+            <!-- B. Luppolo -->
+            <div class="subsection-block">
+                <h3 class="subsection-title">2. Luppolo</h3>
+                
+                <!-- Intensità -->
+                <div class="slider-box">
+                    <div class="slider-header">
+                        <span class="slider-title">Intensità</span>
+                        <span class="slider-badge" id="badge_aroma_luppolo_int">Medio-bassa</span>
+                    </div>
+                    <div class="slider-input-wrapper">
+                        <input type="range" id="aroma_luppolo_int" min="0" max="4" step="1" value="1" oninput="aggiornaSliderIntensita('aroma_luppolo')">
+                    </div>
+                    <div class="slider-ticks-container">
+                        <div class="slider-ticks-track">
+                            <span class="slider-tick" style="left: 0%;">Bassa</span>
+                            <span class="slider-tick" style="left: 25%;">Medio-bassa</span>
+                            <span class="slider-tick" style="left: 50%;">Media</span>
+                            <span class="slider-tick" style="left: 75%;">Medio-alta</span>
+                            <span class="slider-tick" style="left: 100%;">Alta</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Piacevolezza -->
+                <div class="slider-box">
+                    <div class="slider-header">
+                        <span class="slider-title">Piacevolezza</span>
+                        <span class="slider-badge" id="badge_aroma_luppolo_piac">Voto: 2 / 5</span>
+                    </div>
+                    <div class="slider-input-wrapper">
+                        <input type="range" id="aroma_luppolo_piac" min="1" max="5" step="1" value="2" oninput="aggiornaSliderVoto('aroma_luppolo_piac')">
+                    </div>
+                    <div class="slider-ticks-container">
+                        <div class="slider-ticks-track">
+                            <span class="slider-tick" style="left: 0%;">1 (Poco)</span>
+                            <span class="slider-tick" style="left: 25%;">2</span>
+                            <span class="slider-tick" style="left: 50%;">3</span>
+                            <span class="slider-tick" style="left: 75%;">4</span>
+                            <span class="slider-tick" style="left: 100%;">5 (Molto)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- C. Fermentazione -->
+            <div class="subsection-block">
+                <h3 class="subsection-title">3. Fermentazione</h3>
+                
+                <!-- Intensità -->
+                <div class="slider-box">
+                    <div class="slider-header">
+                        <span class="slider-title">Intensità</span>
+                        <span class="slider-badge" id="badge_aroma_fermentazione_int">Medio-bassa</span>
+                    </div>
+                    <div class="slider-input-wrapper">
+                        <input type="range" id="aroma_fermentazione_int" min="0" max="4" step="1" value="1" oninput="aggiornaSliderIntensita('aroma_fermentazione')">
+                    </div>
+                    <div class="slider-ticks-container">
+                        <div class="slider-ticks-track">
+                            <span class="slider-tick" style="left: 0%;">Bassa</span>
+                            <span class="slider-tick" style="left: 25%;">Medio-bassa</span>
+                            <span class="slider-tick" style="left: 50%;">Media</span>
+                            <span class="slider-tick" style="left: 75%;">Medio-alta</span>
+                            <span class="slider-tick" style="left: 100%;">Alta</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Piacevolezza -->
+                <div class="slider-box">
+                    <div class="slider-header">
+                        <span class="slider-title">Piacevolezza</span>
+                        <span class="slider-badge" id="badge_aroma_fermentazione_piac">Voto: 2 / 5</span>
+                    </div>
+                    <div class="slider-input-wrapper">
+                        <input type="range" id="aroma_fermentazione_piac" min="1" max="5" step="1" value="2" oninput="aggiornaSliderVoto('aroma_fermentazione_piac')">
+                    </div>
+                    <div class="slider-ticks-container">
+                        <div class="slider-ticks-track">
+                            <span class="slider-tick" style="left: 0%;">1 (Poco)</span>
+                            <span class="slider-tick" style="left: 25%;">2</span>
+                            <span class="slider-tick" style="left: 50%;">3</span>
+                            <span class="slider-tick" style="left: 75%;">4</span>
+                            <span class="slider-tick" style="left: 100%;">5 (Molto)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- D. Bargnolino -->
+            <div class="subsection-block">
+                <h3 class="subsection-title">4. Bargnolino</h3>
+                
+                <!-- Intensità -->
+                <div class="slider-box">
+                    <div class="slider-header">
+                        <span class="slider-title">Intensità</span>
+                        <span class="slider-badge" id="badge_aroma_bargnolino_int">Medio-bassa</span>
+                    </div>
+                    <div class="slider-input-wrapper">
+                        <input type="range" id="aroma_bargnolino_int" min="0" max="4" step="1" value="1" oninput="aggiornaSliderIntensita('aroma_bargnolino')">
+                    </div>
+                    <div class="slider-ticks-container">
+                        <div class="slider-ticks-track">
+                            <span class="slider-tick" style="left: 0%;">Bassa</span>
+                            <span class="slider-tick" style="left: 25%;">Medio-bassa</span>
+                            <span class="slider-tick" style="left: 50%;">Media</span>
+                            <span class="slider-tick" style="left: 75%;">Medio-alta</span>
+                            <span class="slider-tick" style="left: 100%;">Alta</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Piacevolezza -->
+                <div class="slider-box">
+                    <div class="slider-header">
+                        <span class="slider-title">Piacevolezza</span>
+                        <span class="slider-badge" id="badge_aroma_bargnolino_piac">Voto: 2 / 5</span>
+                    </div>
+                    <div class="slider-input-wrapper">
+                        <input type="range" id="aroma_bargnolino_piac" min="1" max="5" step="1" value="2" oninput="aggiornaSliderVoto('aroma_bargnolino_piac')">
+                    </div>
+                    <div class="slider-ticks-container">
+                        <div class="slider-ticks-track">
+                            <span class="slider-tick" style="left: 0%;">1 (Poco)</span>
+                            <span class="slider-tick" style="left: 25%;">2</span>
+                            <span class="slider-tick" style="left: 50%;">3</span>
+                            <span class="slider-tick" style="left: 75%;">4</span>
+                            <span class="slider-tick" style="left: 100%;">5 (Molto)</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- 3. Profumo Fruttato -->
+        <!-- 3. Corposità -->
         <div class="section">
-            <label class="question">3. Profumo Fruttato</label>
-            <div class="options-group">
-                <label><input type="radio" name="profumo_fruttato_tipo" value="ASSENTE"> Assente</label>
-                <label><input type="radio" name="profumo_fruttato_tipo" value="DELICATO"> Delicato</label>
-                <label><input type="radio" name="profumo_fruttato_tipo" value="MEDIO"> Medio</label>
-                <label><input type="radio" name="profumo_fruttato_tipo" value="INTENSO"> Intenso</label>
-            </div>
-            <span class="helper-text" style="margin-top:14px;">Valuta gradimento da 1 a 5:</span>
-            <div class="scale-group">
-                <label><input type="radio" name="profumo_fruttato_voto" value="1"><br>1</label>
-                <label><input type="radio" name="profumo_fruttato_voto" value="2"><br>2</label>
-                <label><input type="radio" name="profumo_fruttato_voto" value="3"><br>3</label>
-                <label><input type="radio" name="profumo_fruttato_voto" value="4"><br>4</label>
-                <label><input type="radio" name="profumo_fruttato_voto" value="5"><br>5</label>
-            </div>
-        </div>
-
-        <!-- 4. Corposità -->
-        <div class="section">
-            <label class="question">4. Corposità</label>
+            <label class="question">3. Corposità</label>
             <div class="options-group">
                 <label><input type="radio" name="corposita_tipo" value="ACQUOSA"> Acquosa</label>
                 <label><input type="radio" name="corposita_tipo" value="MEDIO CORPO"> Medio corpo</label>
@@ -581,9 +757,9 @@
             </div>
         </div>
 
-        <!-- 5. Gusto Fruttato -->
+        <!-- 4. Gusto Fruttato -->
         <div class="section">
-            <label class="question">5. Gusto Fruttato</label>
+            <label class="question">4. Gusto Fruttato</label>
             <div class="options-group">
                 <label><input type="radio" name="gusto_fruttato_tipo" value="ASSENTE"> Assente</label>
                 <label><input type="radio" name="gusto_fruttato_tipo" value="DELICATO"> Delicato</label>
@@ -600,9 +776,9 @@
             </div>
         </div>
 
-        <!-- 6. Retrogusto -->
+        <!-- 5. Retrogusto -->
         <div class="section">
-            <label class="question">6. Retrogusto (puoi selezionare più elementi)</label>
+            <label class="question">5. Retrogusto (puoi selezionare più elementi)</label>
             <div class="options-group">
                 <label><input type="checkbox" name="retrogusto" value="MALTATO"> Maltato</label>
                 <label><input type="checkbox" name="retrogusto" value="AMARO"> Amaro</label>
@@ -620,18 +796,18 @@
             </div>
         </div>
 
-        <!-- 7. Valutazioni Finali -->
+        <!-- 6. Valutazioni Finali -->
         <div class="section">
-            <label class="question">7. Secondo te, è abbastanza bargnolinosa?</label>
+            <label class="question">6. Secondo te, è abbastanza bargnolinosa?</label>
             <div class="radio-group">
                 <label><input type="radio" name="abbastanza_bargnolinosa" value="SI"> SI</label>
                 <label><input type="radio" name="abbastanza_bargnolinosa" value="NO"> NO</label>
             </div>
         </div>
 
-        <!-- 8. Intento d'acquisto e prezzo condizionale -->
+        <!-- 7. Intento d'acquisto e prezzo condizionale -->
         <div class="section">
-            <label class="question">8. La compreresti?</label>
+            <label class="question">7. La compreresti?</label>
             <div class="radio-group">
                 <label><input type="radio" name="compreresti" value="SI" onclick="togglePrezzo(true)"> SI</label>
                 <label><input type="radio" name="compreresti" value="NO" onclick="togglePrezzo(false)"> NO</label>
@@ -683,6 +859,8 @@
         limpidezza: ["limpida", "leggermente velata", "velata", "torbida"]
     };
 
+    const livelliIntensita = ["bassa", "medio-bassa", "media", "medio-alta", "alta"];
+
     function aggiornaSliderVisivo(tipo) {
         const slider = document.getElementById(`visivo_${tipo}`);
         const badge = document.getElementById(`badge_${tipo}`);
@@ -691,10 +869,21 @@
         badge.textContent = testo.charAt(0).toUpperCase() + testo.slice(1);
     }
 
-    function aggiornaSliderVoto(tipo) {
-        const slider = document.getElementById(`${tipo}_voto`);
-        const badge = document.getElementById(`badge_${tipo}`);
-        badge.textContent = `Voto: ${slider.value} / 5`;
+    function aggiornaSliderIntensita(prefix) {
+        const slider = document.getElementById(`${prefix}_int`);
+        const badge = document.getElementById(`badge_${prefix}_int`);
+        const valIndex = parseInt(slider.value, 10);
+        const testo = livelliIntensita[valIndex];
+        badge.textContent = testo.charAt(0).toUpperCase() + testo.slice(1);
+    }
+
+    function aggiornaSliderVoto(key) {
+        const slider = document.getElementById(key.endsWith('_voto') ? key : `${key}`);
+        const badgeId = key.startsWith('badge_') ? key : `badge_${key.replace('_voto', '')}`;
+        const badge = document.getElementById(badgeId);
+        if (badge) {
+            badge.textContent = `Voto: ${slider.value} / 5`;
+        }
     }
 
     function normalizzaNome(nome) {
@@ -780,14 +969,27 @@
             timestamp: new Date().toISOString(),
             versione_birra: versione,
             nome: nomeRaw.trim(),
+            
+            // Esame Visivo
             visivo_schiuma: mappeValori.schiuma[schiIndex],
             visivo_persistenza: mappeValori.persistenza[persIndex],
             visivo_limpidezza: mappeValori.limpidezza[limpIndex],
             aspetto_rosato_voto: document.getElementById('aspetto_rosato_voto').value,
-            profumo_floreale_tipo: getRadioVal('profumo_floreale_tipo'),
-            profumo_floreale_voto: getRadioVal('profumo_floreale_voto'),
-            profumo_fruttato_tipo: getRadioVal('profumo_fruttato_tipo'),
-            profumo_fruttato_voto: getRadioVal('profumo_fruttato_voto'),
+            
+            // Esame Olfattivo (Aroma)
+            aroma_malto_intensita: livelliIntensita[parseInt(document.getElementById('aroma_malto_int').value, 10)],
+            aroma_malto_piacevolezza: document.getElementById('aroma_malto_piac').value,
+            
+            aroma_luppolo_intensita: livelliIntensita[parseInt(document.getElementById('aroma_luppolo_int').value, 10)],
+            aroma_luppolo_piacevolezza: document.getElementById('aroma_luppolo_piac').value,
+            
+            aroma_fermentazione_intensita: livelliIntensita[parseInt(document.getElementById('aroma_fermentazione_int').value, 10)],
+            aroma_fermentazione_piacevolezza: document.getElementById('aroma_fermentazione_piac').value,
+            
+            aroma_bargnolino_intensita: livelliIntensita[parseInt(document.getElementById('aroma_bargnolino_int').value, 10)],
+            aroma_bargnolino_piacevolezza: document.getElementById('aroma_bargnolino_piac').value,
+            
+            // Altri parametri degustazione
             corposita_tipo: getRadioVal('corposita_tipo'),
             corposita_voto: getRadioVal('corposita_voto'),
             gusto_fruttato_tipo: getRadioVal('gusto_fruttato_tipo'),

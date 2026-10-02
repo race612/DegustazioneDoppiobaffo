@@ -15,209 +15,192 @@
             --text-main: #1e293b;
             --text-muted: #64748b;
             --border: #e2e8f0;
-            --slider-track: #e2e8f0;
-            --slider-fill: #c47116;
-            --radius-sm: 8px;
-            --radius-md: 12px;
+            --border-focus: #f59e0b;
             --radius-lg: 16px;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+            --radius-md: 10px;
+            --radius-sm: 6px;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+            --thumb-size: 22px;
         }
 
         * {
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background-color: var(--bg);
             color: var(--text-main);
             margin: 0;
-            padding: 16px 12px 60px 12px;
-            display: flex;
-            justify-content: center;
+            padding: 20px 10px;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
 
+        /* Contenitore più largo per evitare sovrapposizioni nelle etichette */
         .container {
-            width: 100%;
-            max-width: 600px;
-            background-color: var(--surface);
-            padding: 24px 20px;
+            max-width: 780px;
+            background: var(--surface);
+            margin: 0 auto;
+            padding: 20px 12px;
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
             border: 1px solid var(--border);
         }
 
-        .header-logos {
+        /* Loghi ingranditi all'80% della larghezza */
+        .logos-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 28px;
+        }
+
+        .logos-container {
+            width: 80%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--border);
+            gap: 18px;
         }
 
-        .header-logos img {
-            max-height: 52px;
-            max-width: 45%;
+        .logo-item {
+            flex: 1;
+            aspect-ratio: 1 / 1;
+            max-height: 140px;
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            padding: 10px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-item img {
+            width: 100%;
+            height: 100%;
             object-fit: contain;
+            border-radius: var(--radius-sm);
         }
 
         h1 {
-            font-size: 1.35rem;
-            color: var(--primary-dark);
+            font-size: 1.65rem;
+            color: var(--text-main);
             text-align: center;
-            margin: 0 0 6px 0;
-            font-weight: 700;
+            margin: 0 0 10px 0;
+            font-weight: 800;
+            letter-spacing: -0.02em;
         }
 
-        p.subtitle {
-            text-align: center;
-            font-size: 0.85rem;
+        .intro {
+            font-size: 0.95rem;
             color: var(--text-muted);
-            margin: 0 0 24px 0;
-            line-height: 1.4;
+            text-align: center;
+            margin-bottom: 28px;
+            line-height: 1.55;
+            background: var(--primary-light);
+            padding: 14px 20px;
+            border-radius: var(--radius-md);
+            border: 1px solid #fed7aa;
+        }
+
+        .card-highlight {
+            background: #fffdfa;
+            padding: 22px;
+            border-radius: var(--radius-md);
+            border: 1.5px solid #fde68a;
+            margin-bottom: 22px;
         }
 
         .section {
-            margin-bottom: 24px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border);
+            background: var(--surface);
+            margin-bottom: 22px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .section:last-of-type {
-            border-bottom: none;
+        .section:focus-within {
+            border-color: #cbd5e1;
+            box-shadow: var(--shadow-sm);
         }
 
         .section-title {
             font-size: 1.15rem;
-            color: var(--primary-dark);
-            margin-top: 0;
-            margin-bottom: 16px;
-            font-weight: 700;
+            font-weight: 800;
+            color: var(--primary);
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            margin-top: 0;
+            margin-bottom: 18px;
             border-bottom: 2px solid var(--primary-light);
-            padding-bottom: 4px;
+            padding-bottom: 8px;
         }
 
         .subsection-block {
-            background-color: #fafbfc;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 14px 14px 10px 14px;
-            margin-bottom: 16px;
+            padding: 14px 0;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .subsection-block:last-child {
+            border-bottom: none;
+            padding-bottom: 4px;
         }
 
         .subsection-title {
             font-size: 0.98rem;
-            color: var(--primary);
             font-weight: 700;
+            color: var(--text-main);
             margin: 0 0 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .question {
+        label.question {
+            font-weight: 700;
             display: block;
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            font-size: 0.98rem;
             color: var(--text-main);
         }
 
         .helper-text {
-            display: block;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
-            margin-bottom: 8px;
-            font-style: italic;
+            margin-bottom: 12px;
+            display: block;
         }
 
-        input[type="text"], textarea {
+        input[type="text"], select, textarea {
             width: 100%;
-            padding: 12px;
-            border: 1.5px solid var(--border);
+            padding: 12px 14px;
+            border: 1px solid var(--border);
             border-radius: var(--radius-sm);
             font-size: 0.95rem;
-            font-family: inherit;
             color: var(--text-main);
-            background-color: #fff;
-            transition: border-color 0.2s;
+            background: #fdfdfd;
+            transition: all 0.2s ease;
         }
 
-        input[type="text"]:focus, textarea:focus {
+        input[type="text"]:focus, select:focus, textarea:focus {
             outline: none;
             border-color: var(--primary);
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(196, 113, 22, 0.15);
         }
 
-        .radio-group, .options-group {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .radio-group label, .options-group label {
-            flex: 1 1 calc(50% - 10px);
-            display: flex;
-            align-items: center;
-            background: #fff;
-            border: 1.5px solid var(--border);
-            padding: 10px 12px;
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            font-size: 0.88rem;
-            user-select: none;
-            transition: all 0.15s ease;
-        }
-
-        .radio-group label:has(input:checked),
-        .options-group label:has(input:checked) {
-            border-color: var(--primary);
-            background-color: var(--primary-light);
-            color: var(--primary-dark);
-            font-weight: 600;
-        }
-
-        .radio-group input, .options-group input {
-            margin-right: 8px;
-            accent-color: var(--primary);
-        }
-
-        .scale-group {
-            display: flex;
-            justify-content: space-between;
-            gap: 4px;
-            margin-top: 6px;
-        }
-
-        .scale-group label {
-            flex: 1;
-            text-align: center;
-            background: #fff;
-            border: 1.5px solid var(--border);
-            padding: 8px 0;
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            font-size: 0.85rem;
-            transition: all 0.15s ease;
-        }
-
-        .scale-group label:has(input:checked) {
-            border-color: var(--primary);
-            background-color: var(--primary-light);
-            color: var(--primary-dark);
-            font-weight: 700;
-        }
-
-        .scale-group input {
-            margin-bottom: 4px;
-            accent-color: var(--primary);
-        }
-
-        /* --- SLIDER INTERATTIVI --- */
+        /* Slider moderni */
         .slider-box {
-            margin-bottom: 14px;
+            margin-bottom: 20px;
+        }
+
+        .slider-box:last-child {
+            margin-bottom: 4px;
         }
 
         .slider-header {
@@ -228,119 +211,154 @@
         }
 
         .slider-title {
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             font-weight: 600;
             color: var(--text-main);
         }
 
         .slider-badge {
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             font-weight: 700;
-            color: var(--primary-dark);
             background: var(--primary-light);
-            border: 1px solid rgba(196, 113, 22, 0.2);
-            padding: 2px 8px;
+            color: var(--primary-dark);
+            padding: 3px 9px;
             border-radius: 20px;
+            border: 1px solid #fbd38d;
+            text-transform: capitalize;
         }
 
         .slider-input-wrapper {
             position: relative;
-            margin: 4px 0 2px 0;
-            padding: 0 4px;
+            width: 100%;
         }
 
         input[type="range"] {
             -webkit-appearance: none;
+            appearance: none;
             width: 100%;
-            height: 6px;
-            border-radius: 3px;
-            background: var(--slider-track);
+            height: 7px;
+            background: #e2e8f0;
+            border-radius: 4px;
             outline: none;
-            margin: 0;
+            margin: 10px 0 8px 0;
             cursor: pointer;
+            display: block;
         }
 
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 22px;
-            height: 22px;
+            width: var(--thumb-size);
+            height: var(--thumb-size);
             border-radius: 50%;
             background: var(--primary);
-            cursor: pointer;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            border: 2px solid #fff;
-            transition: transform 0.1s ease, background-color 0.1s ease;
+            border: 3px solid #ffffff;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.15s ease, background-color 0.15s ease;
         }
 
-        input[type="range"]::-webkit-slider-thumb:active {
+        input[type="range"]::-moz-range-thumb {
+            width: var(--thumb-size);
+            height: var(--thumb-size);
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid #ffffff;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        input[type="range"]:active::-webkit-slider-thumb {
             transform: scale(1.15);
             background: var(--primary-dark);
         }
 
-        input[type="range"]::-moz-range-thumb {
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            background: var(--primary);
-            cursor: pointer;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            border: 2px solid #fff;
-            transition: transform 0.1s ease, background-color 0.1s ease;
-        }
-
+        /* Contenitore etichette per allineamento preciso con il thumb */
         .slider-ticks-container {
             position: relative;
-            height: 16px;
-            margin-top: 2px;
-            padding: 0 4px;
+            width: 100%;
+            height: 20px;
         }
 
         .slider-ticks-track {
-            position: relative;
-            width: 100%;
-            height: 100%;
+            position: absolute;
+            left: calc(var(--thumb-size) / 2);
+            right: calc(var(--thumb-size) / 2);
+            top: 0;
+            bottom: 0;
         }
 
         .slider-tick {
             position: absolute;
-            font-size: 0.68rem;
-            color: var(--text-muted);
             transform: translateX(-50%);
+            font-size: 0.74rem;
+            color: var(--text-muted);
             white-space: nowrap;
+            user-select: none;
+            text-transform: capitalize;
+        }
+
+        .options-group, .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .options-group label, .radio-group label {
+            background: #f8fafc;
+            padding: 8px 14px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            font-size: 0.88rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s, border-color 0.2s;
             user-select: none;
         }
 
-        .slider-tick:first-child {
-            transform: translateX(0);
+        .options-group label:hover, .radio-group label:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
         }
 
-        .slider-tick:last-child {
-            transform: translateX(-100%);
-        }
-
-        #prezzoContainer {
-            display: none;
-            margin-top: 14px;
-            padding: 12px;
-            background-color: var(--primary-light);
+        .scale-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            background: #f8fafc;
+            padding: 10px 12px;
             border-radius: var(--radius-sm);
-            border-left: 3px solid var(--primary);
+            border: 1px solid var(--border);
+        }
+
+        .scale-group label {
+            flex: 1;
+            text-align: center;
+            cursor: pointer;
+            font-size: 0.88rem;
+            font-weight: 700;
+            padding: 6px 0;
+            border-radius: 4px;
+        }
+
+        .scale-group label:hover {
+            background: #e2e8f0;
         }
 
         button[type="submit"] {
-            width: 100%;
             background-color: var(--primary);
-            color: white;
+            color: #ffffff;
             border: none;
-            padding: 14px;
-            font-size: 1rem;
-            font-weight: 700;
+            padding: 15px 24px;
+            font-size: 1.02rem;
+            width: 100%;
             border-radius: var(--radius-md);
             cursor: pointer;
-            box-shadow: var(--shadow-sm);
-            transition: background-color 0.2s, transform 0.05s;
-            margin-top: 8px;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+            transition: background-color 0.2s, transform 0.1s;
+            box-shadow: 0 4px 12px rgba(196, 113, 22, 0.25);
+            margin-top: 10px;
         }
 
         button[type="submit"]:hover {
@@ -348,55 +366,59 @@
         }
 
         button[type="submit"]:active {
-            transform: scale(0.99);
+            transform: translateY(1px);
         }
 
         button[type="submit"]:disabled {
-            background-color: var(--text-muted);
+            background-color: #cbd5e1;
             cursor: not-allowed;
-            transform: none;
+            box-shadow: none;
         }
 
         .success-msg {
             display: none;
-            text-align: center;
-            padding: 30px 16px;
             background-color: #f0fdf4;
-            border: 1px solid #bbf7d0;
-            border-radius: var(--radius-md);
             color: #166534;
+            padding: 24px;
+            border-radius: var(--radius-md);
+            text-align: center;
+            border: 1px solid #bbf7d0;
+            margin-top: 20px;
         }
 
-        /* Modale */
+        #prezzoContainer {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed var(--border);
+        }
+
         #duplicateModal {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.45);
-            z-index: 1000;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(3px);
             justify-content: center;
             align-items: center;
+            z-index: 1000;
             padding: 16px;
         }
 
         .modal-content {
-            background-color: #fff;
-            padding: 24px;
+            background: #ffffff;
+            padding: 26px;
             border-radius: var(--radius-md);
             max-width: 420px;
             width: 100%;
             text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            box-shadow: var(--shadow-md);
         }
 
         .modal-buttons {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             margin-top: 20px;
-            justify-content: center;
         }
 
         .modal-buttons button {
@@ -406,113 +428,119 @@
             border-radius: var(--radius-sm);
             font-weight: 600;
             cursor: pointer;
-            color: white;
+            color: #ffffff;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="header-logos">
-        <img src="doppiobaffo.png" alt="Logo Doppio Baffo">
-        <img src="hbl.png" alt="Logo HBL">
-        <img src="ubt.png" alt="Logo UBT">
+    <div class="logos-wrapper">
+        <div class="logos-container">
+            <div class="logo-item">
+                <img src="hbl.png" alt="Logo HBL" onerror="this.parentElement.style.display='none'">
+            </div>
+            <div class="logo-item">
+                <img src="doppiobaffo.png" alt="Logo Doppiobaffo" onerror="this.parentElement.style.display='none'">
+            </div>
+            <div class="logo-item">
+                <img src="ubt.png" alt="Logo UBT" onerror="this.parentElement.style.display='none'">
+            </div>
+        </div>
     </div>
 
-    <h1>Scheda Degustazione</h1>
-    <p class="subtitle">Saison con Bargnolino dell'Oltrepò Pavese</p>
+    <h1>Saison Oltrepò Pavese</h1>
+    <div class="intro">
+        Prototipo in collaborazione con l'Università degli Studi di Pavia (con cereali del territorio e bargnolino). Valuta il prodotto secondo le tue preferenze.
+    </div>
 
     <form id="degustazioneForm">
-        <!-- Info Degustatore -->
-        <div class="section">
-            <label class="question" for="nome">Nome Degustatore</label>
-            <input type="text" id="nome" placeholder="Inserisci il tuo nome e cognome" required>
+        
+        <div class="card-highlight">
+            <label class="question" for="versione_birra">Seleziona la versione che stai assaggiando*</label>
+            <select id="versione_birra" required onchange="controllaDuplicato()">
+                <option value="">-- Scegli la versione --</option>
+                <option value="Versione A">Versione A</option>
+                <option value="Versione B">Versione B</option>
+                <option value="Versione C">Versione C</option>
+                <option value="Versione D">Versione D</option>
+            </select>
         </div>
 
-        <!-- Selezione Variante -->
         <div class="section">
-            <label class="question">Versione in assaggio</label>
-            <div class="radio-group" style="flex-direction: column; gap: 8px;">
-                <label>
-                    <input type="radio" name="versione_birra" value="SENZA BIANCOSPINO" required>
-                    Versione senza biancospino (tappo oro)
-                </label>
-                <label>
-                    <input type="radio" name="versione_birra" value="CON BIANCOSPINO" required>
-                    Versione con biancospino (tappo nero)
-                </label>
-            </div>
+            <label class="question" for="nome">Nome Assaggiatore*</label>
+            <input type="text" id="nome" placeholder="Il tuo nome o nickname" required onblur="controllaDuplicato()">
         </div>
 
         <!-- MACROAREA 1: Esame Visivo -->
         <div class="section">
             <h2 class="section-title">Esame Visivo</h2>
-
-            <!-- Schiuma -->
+            
+            <!-- 1. Quantità Schiuma -->
             <div class="slider-box">
                 <div class="slider-header">
-                    <span class="slider-title">Schiuma</span>
-                    <span class="slider-badge" id="badge_schiuma">Media</span>
+                    <span class="slider-title">Quantità Schiuma</span>
+                    <span class="slider-badge" id="badge_schiuma">Scarsa</span>
                 </div>
                 <div class="slider-input-wrapper">
-                    <input type="range" id="visivo_schiuma" min="0" max="3" step="1" value="2" oninput="aggiornaSliderVisivo('schiuma')">
+                    <input type="range" id="visivo_schiuma" min="0" max="3" step="1" value="1" oninput="aggiornaSliderVisivo('schiuma')">
                 </div>
                 <div class="slider-ticks-container">
                     <div class="slider-ticks-track">
                         <span class="slider-tick" style="left: 0%;">Assente</span>
-                        <span class="slider-tick" style="left: 33.33%;">Scarsa</span>
-                        <span class="slider-tick" style="left: 66.66%;">Media</span>
+                        <span class="slider-tick" style="left: 33.333%;">Scarsa</span>
+                        <span class="slider-tick" style="left: 66.666%;">Media</span>
                         <span class="slider-tick" style="left: 100%;">Abbondante</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Persistenza -->
+            <!-- 2. Persistenza Schiuma -->
             <div class="slider-box">
                 <div class="slider-header">
-                    <span class="slider-title">Persistenza</span>
-                    <span class="slider-badge" id="badge_persistenza">Media</span>
+                    <span class="slider-title">Persistenza Schiuma</span>
+                    <span class="slider-badge" id="badge_persistenza">Breve</span>
                 </div>
                 <div class="slider-input-wrapper">
-                    <input type="range" id="visivo_persistenza" min="0" max="3" step="1" value="2" oninput="aggiornaSliderVisivo('persistenza')">
+                    <input type="range" id="visivo_persistenza" min="0" max="3" step="1" value="1" oninput="aggiornaSliderVisivo('persistenza')">
                 </div>
                 <div class="slider-ticks-container">
                     <div class="slider-ticks-track">
                         <span class="slider-tick" style="left: 0%;">Evanescente</span>
-                        <span class="slider-tick" style="left: 33.33%;">Breve</span>
-                        <span class="slider-tick" style="left: 66.66%;">Media</span>
+                        <span class="slider-tick" style="left: 33.333%;">Breve</span>
+                        <span class="slider-tick" style="left: 66.666%;">Media</span>
                         <span class="slider-tick" style="left: 100%;">Lunga</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Limpidezza -->
+            <!-- 3. Limpidezza -->
             <div class="slider-box">
                 <div class="slider-header">
                     <span class="slider-title">Limpidezza</span>
-                    <span class="slider-badge" id="badge_limpidezza">Velata</span>
+                    <span class="slider-badge" id="badge_limpidezza">Leggermente velata</span>
                 </div>
                 <div class="slider-input-wrapper">
-                    <input type="range" id="visivo_limpidezza" min="0" max="3" step="1" value="2" oninput="aggiornaSliderVisivo('limpidezza')">
+                    <input type="range" id="visivo_limpidezza" min="0" max="3" step="1" value="1" oninput="aggiornaSliderVisivo('limpidezza')">
                 </div>
                 <div class="slider-ticks-container">
                     <div class="slider-ticks-track">
                         <span class="slider-tick" style="left: 0%;">Limpida</span>
-                        <span class="slider-tick" style="left: 33.33%;">Legg. velata</span>
-                        <span class="slider-tick" style="left: 66.66%;">Velata</span>
+                        <span class="slider-tick" style="left: 33.333%;">Leggerm. velata</span>
+                        <span class="slider-tick" style="left: 66.666%;">Velata</span>
                         <span class="slider-tick" style="left: 100%;">Torbida</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Aspetto Rosato -->
-            <div class="slider-box" style="margin-top: 20px;">
+            <!-- 4. Aspetto (Gradimento rosato) -->
+            <div class="slider-box" style="margin-top: 22px; border-top: 1px dashed var(--border); padding-top: 18px;">
                 <div class="slider-header">
-                    <span class="slider-title">Aspetto generale</span>
-                    <span class="slider-badge" id="badge_aspetto_rosato_voto">2 / 5</span>
+                    <span class="slider-title">Gradimento aspetto generale</span>
+                    <span class="slider-badge" id="badge_aspetto_rosato">Voto: 2 / 5</span>
                 </div>
                 <div class="slider-input-wrapper">
-                    <input type="range" id="aspetto_rosato_voto" min="1" max="5" step="1" value="2" oninput="aggiornaSliderVoto('aspetto_rosato_voto')">
+                    <input type="range" id="aspetto_rosato_voto" min="1" max="5" step="1" value="2" oninput="aggiornaSliderVoto('aspetto_rosato')">
                 </div>
                 <div class="slider-ticks-container">
                     <div class="slider-ticks-track">
@@ -978,7 +1006,7 @@
             </div>
         </div>
 
-        <!-- 5. Retrogusto (selezioni multiple) -->
+        <!-- 5. Retrogusto -->
         <div class="section">
             <label class="question">5. Retrogusto (puoi selezionare più elementi)</label>
             <div class="options-group">
@@ -1061,40 +1089,49 @@
         limpidezza: ["limpida", "leggermente velata", "velata", "torbida"]
     };
 
-    const livelliIntensita = ["Bassa", "Medio-bassa", "Media", "Medio-alta", "Alta"];
+    const livelliIntensita = ["bassa", "medio-bassa", "media", "medio-alta", "alta"];
 
     function aggiornaSliderVisivo(tipo) {
         const slider = document.getElementById(`visivo_${tipo}`);
         const badge = document.getElementById(`badge_${tipo}`);
         const valIndex = parseInt(slider.value, 10);
-        const etichette = {
-            schiuma: ["Assente", "Scarsa", "Media", "Abbondante"],
-            persistenza: ["Evanescente", "Breve", "Media", "Lunga"],
-            limpidezza: ["Limpida", "Legg. velata", "Velata", "Torbida"]
-        };
-        badge.textContent = etichette[tipo][valIndex];
+        const testo = mappeValori[tipo][valIndex];
+        badge.textContent = testo.charAt(0).toUpperCase() + testo.slice(1);
     }
 
     function aggiornaSliderIntensita(prefix) {
         const slider = document.getElementById(`${prefix}_int`);
         const badge = document.getElementById(`badge_${prefix}_int`);
         const valIndex = parseInt(slider.value, 10);
-        badge.textContent = livelliIntensita[valIndex];
+        const testo = livelliIntensita[valIndex];
+        badge.textContent = testo.charAt(0).toUpperCase() + testo.slice(1);
     }
 
-    function aggiornaSliderVoto(id) {
-        const slider = document.getElementById(id);
-        const badge = document.getElementById(`badge_${id}`);
-        badge.textContent = `Voto: ${slider.value} / 5`;
-    }
-
-    function togglePrezzo(mostra) {
-        const c = document.getElementById('prezzoContainer');
-        c.style.display = mostra ? 'block' : 'none';
-        if (!mostra) {
-            const inputs = c.querySelectorAll('input[type="radio"]');
-            inputs.forEach(i => i.checked = false);
+    function aggiornaSliderVoto(key) {
+        const slider = document.getElementById(key.endsWith('_voto') ? key : `${key}`);
+        const badgeId = key.startsWith('badge_') ? key : `badge_${key.replace('_voto', '')}`;
+        const badge = document.getElementById(badgeId);
+        if (badge) {
+            badge.textContent = `Voto: ${slider.value} / 5`;
         }
+    }
+
+    function normalizzaNome(nome) {
+        return nome.trim().toLowerCase();
+    }
+
+    function controllaDuplicato() {
+        const nome = normalizzaNome(document.getElementById('nome').value);
+        const versione = document.getElementById('versione_birra').value;
+
+        if (!nome || !versione) return false;
+
+        const votiFatti = JSON.parse(localStorage.getItem('voti_degustazione_saison') || '{}');
+        if (votiFatti[nome] && votiFatti[nome].includes(versione)) {
+            document.getElementById('duplicateModal').style.display = 'flex';
+            return true;
+        }
+        return false;
     }
 
     function chiudiModale() {
@@ -1103,38 +1140,44 @@
 
     function cambiaVariante() {
         chiudiModale();
-        const radios = document.querySelectorAll('input[name="versione_birra"]');
-        radios.forEach(r => r.checked = false);
-        window.scrollTo({ top: 120, behavior: 'smooth' });
+        document.getElementById('versione_birra').value = "";
+        document.getElementById('versione_birra').focus();
+    }
+
+    function togglePrezzo(mostra) {
+        const container = document.getElementById('prezzoContainer');
+        container.style.display = mostra ? 'block' : 'none';
+        if (!mostra) {
+            document.querySelectorAll('input[name="prezzo_disposto"]').forEach(el => el.checked = false);
+        }
     }
 
     document.getElementById('degustazioneForm').addEventListener('submit', function(e) {
         e.preventDefault();
-
+        
         const nomeRaw = document.getElementById('nome').value;
-        const nomeKey = nomeRaw.trim().toLowerCase();
-        const versioneRadio = document.querySelector('input[name="versione_birra"]:checked');
+        const nomeKey = normalizzaNome(nomeRaw);
+        const versione = document.getElementById('versione_birra').value;
 
-        if (!nomeKey || !versioneRadio) {
-            alert("Compila tutti i campi obbligatori prima di procedere.");
+        if (!nomeKey) {
+            alert("Per favore, inserisci il tuo nome prima di inviare.");
+            document.getElementById('nome').focus();
             return;
         }
 
-        const versione = versioneRadio.value;
-
-        // Controllo duplicati in LocalStorage
-        let votiFatti = JSON.parse(localStorage.getItem('voti_degustazione_saison')) || {};
-        if (votiFatti[nomeKey] && votiFatti[nomeKey].includes(versione)) {
-            document.getElementById('duplicateModal').style.display = 'flex';
-            return;
-        }
+        let votiFatti = JSON.parse(localStorage.getItem('voti_degustazione_saison') || '{}');
         if (!votiFatti[nomeKey]) {
             votiFatti[nomeKey] = [];
         }
 
+        if (votiFatti[nomeKey].includes(versione)) {
+            document.getElementById('duplicateModal').style.display = 'flex';
+            return;
+        }
+
         const btn = document.getElementById('submitBtn');
         btn.disabled = true;
-        btn.textContent = "Invio dati in corso...";
+        btn.textContent = "Invio in corso...";
 
         const getRadioVal = (name) => {
             const el = document.querySelector(`input[name="${name}"]:checked`);
@@ -1175,8 +1218,8 @@
             
             aroma_bargnolino_intensita: livelliIntensita[parseInt(document.getElementById('aroma_bargnolino_int').value, 10)],
             aroma_bargnolino_piacevolezza: document.getElementById('aroma_bargnolino_piac').value,
-            
-            // Esame Gustativo (Gusto)
+
+            // Gusto
             gusto_malto_intensita: livelliIntensita[parseInt(document.getElementById('gusto_malto_int').value, 10)],
             gusto_malto_piacevolezza: document.getElementById('gusto_malto_piac').value,
             
@@ -1188,10 +1231,10 @@
             
             gusto_bargnolino_intensita: livelliIntensita[parseInt(document.getElementById('gusto_bargnolino_int').value, 10)],
             gusto_bargnolino_piacevolezza: document.getElementById('gusto_bargnolino_piac').value,
-            
+
             gusto_retrogusto_intensita: livelliIntensita[parseInt(document.getElementById('gusto_retrogusto_int').value, 10)],
             gusto_retrogusto_piacevolezza: document.getElementById('gusto_retrogusto_piac').value,
-
+            
             // Altri parametri degustazione
             corposita_tipo: getRadioVal('corposita_tipo'),
             corposita_voto: getRadioVal('corposita_voto'),

@@ -6,218 +6,399 @@
     <title>Degustazione Saison Oltrepò Pavese</title>
     <style>
         :root {
-            --primary-color: #7B3F00;
-            --primary-hover: #5e3000;
-            --bg-color: #f7f5f0;
-            --card-bg: #ffffff;
-            --text-color: #2c3e50;
-            --border-color: #e2d9cc;
+            --primary: #c47116;
+            --primary-dark: #9d5409;
+            --primary-light: #fff8f0;
+            --accent: #2d6a4f;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --border-focus: #f59e0b;
+            --radius-lg: 16px;
+            --radius-md: 10px;
+            --radius-sm: 6px;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
         }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
             margin: 0;
-            padding: 20px;
+            padding: 24px 16px;
             line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
+
         .container {
-            max-width: 650px;
-            background: var(--card-bg);
+            max-width: 680px;
+            background: var(--surface);
             margin: 0 auto;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(123, 63, 0, 0.08);
-            border: 1px solid var(--border-color);
+            padding: 36px 28px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
         }
+
+        /* Loghi */
         .logos-container {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 20px;
-            margin-bottom: 25px;
+            margin-bottom: 24px;
         }
-        .logos-container img {
-            width: 70px;
-            height: 70px;
+
+        .logo-item {
+            width: 76px;
+            height: 76px;
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            padding: 6px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-item img {
+            width: 100%;
+            height: 100%;
             object-fit: contain;
-            border-radius: 8px;
-            background: #faf7f2;
-            padding: 5px;
-            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
         }
+
         h1 {
-            font-size: 1.5rem;
-            color: var(--primary-color);
+            font-size: 1.6rem;
+            color: var(--text-main);
             text-align: center;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            margin: 0 0 10px 0;
+            font-weight: 800;
+            letter-spacing: -0.02em;
         }
+
         .intro {
-            font-size: 0.92rem;
-            color: #666;
+            font-size: 0.95rem;
+            color: var(--text-muted);
             text-align: center;
-            margin-bottom: 30px;
-            line-height: 1.5;
-            background: #faf7f2;
-            padding: 12px;
-            border-radius: 8px;
-            border-left: 4px solid var(--primary-color);
+            margin-bottom: 28px;
+            line-height: 1.55;
+            background: var(--primary-light);
+            padding: 14px 18px;
+            border-radius: var(--radius-md);
+            border: 1px solid #fed7aa;
         }
-        .highlight-box {
-            background: #fff8f0;
-            padding: 18px;
-            border-radius: 8px;
-            border: 1px solid #f3d6b8;
-            margin-bottom: 25px;
-        }
-        .section {
-            background: #fff;
-            margin-bottom: 20px;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
+
+        .card-highlight {
+            background: #fffdfa;
             padding: 20px;
-            transition: all 0.2s ease;
+            border-radius: var(--radius-md);
+            border: 1.5px solid #fde68a;
+            margin-bottom: 22px;
         }
-        .section:hover {
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+
+        .section {
+            background: var(--surface);
+            margin-bottom: 18px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
+
+        .section:focus-within {
+            border-color: #cbd5e1;
+            box-shadow: var(--shadow-sm);
+        }
+
         label.question {
-            font-weight: 600;
+            font-weight: 700;
             display: block;
             margin-bottom: 12px;
             font-size: 0.98rem;
-            color: var(--text-color);
+            color: var(--text-main);
         }
-        .options-group, .radio-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 10px;
+
+        .helper-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            display: block;
         }
-        .options-group label, .radio-group label {
-            background: #faf9f6;
-            padding: 8px 14px;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
-            font-size: 0.9rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: background 0.2s;
+
+        /* Input generici */
+        input[type="text"], select, textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            color: var(--text-main);
+            background: #fdfdfd;
+            transition: all 0.2s ease;
         }
-        .options-group label:hover, .radio-group label:hover {
-            background: #f0ebe1;
+
+        input[type="text"]:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(196, 113, 22, 0.15);
         }
-        .scale-group {
+
+        /* Slider orizzontali */
+        .slider-box {
+            margin-bottom: 24px;
+        }
+
+        .slider-box:last-child {
+            margin-bottom: 6px;
+        }
+
+        .slider-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: #faf9f6;
-            padding: 12px;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
-            margin-top: 10px;
+            margin-bottom: 10px;
         }
+
+        .slider-title {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .slider-badge {
+            font-size: 0.82rem;
+            font-weight: 700;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 4px 10px;
+            border-radius: 20px;
+            border: 1px solid #fbd38d;
+            text-transform: capitalize;
+        }
+
+        .slider-input-wrapper {
+            position: relative;
+            padding: 0 4px;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 7px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            outline: none;
+            margin: 12px 0 8px 0;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid #ffffff;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.15s ease, background-color 0.15s ease;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid #ffffff;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        input[type="range"]:active::-webkit-slider-thumb {
+            transform: scale(1.15);
+            background: var(--primary-dark);
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2px;
+        }
+
+        .slider-labels span {
+            font-size: 0.76rem;
+            color: var(--text-muted);
+            text-transform: capitalize;
+            text-align: center;
+            flex: 1;
+        }
+
+        .slider-labels span:first-child { text-align: left; }
+        .slider-labels span:last-child { text-align: right; }
+
+        /* Gruppi e scale */
+        .options-group, .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .options-group label, .radio-group label {
+            background: #f8fafc;
+            padding: 8px 14px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            font-size: 0.88rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s, border-color 0.2s;
+            user-select: none;
+        }
+
+        .options-group label:hover, .radio-group label:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+        }
+
+        .scale-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            background: #f8fafc;
+            padding: 10px 12px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+        }
+
         .scale-group label {
-            font-size: 0.9rem;
+            flex: 1;
             text-align: center;
             cursor: pointer;
-            font-weight: 600;
+            font-size: 0.88rem;
+            font-weight: 700;
+            padding: 6px 0;
+            border-radius: 4px;
         }
-        textarea, input[type="text"], select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            box-sizing: border-box;
-            margin-top: 5px;
-            font-size: 0.95rem;
-            background: #faf9f6;
+
+        .scale-group label:hover {
+            background: #e2e8f0;
         }
-        textarea:focus, input[type="text"]:focus, select:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            background: #fff;
-        }
-        button {
-            background-color: var(--primary-color);
-            color: white;
+
+        /* Bottone submit */
+        button[type="submit"] {
+            background-color: var(--primary);
+            color: #ffffff;
             border: none;
-            padding: 14px 20px;
-            font-size: 1.05rem;
+            padding: 15px 24px;
+            font-size: 1.02rem;
             width: 100%;
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             cursor: pointer;
-            font-weight: bold;
-            letter-spacing: 0.5px;
-            transition: background-color 0.2s;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+            transition: background-color 0.2s, transform 0.1s;
+            box-shadow: 0 4px 12px rgba(196, 113, 22, 0.25);
             margin-top: 10px;
         }
-        button:hover {
-            background-color: var(--primary-hover);
+
+        button[type="submit"]:hover {
+            background-color: var(--primary-dark);
         }
+
+        button[type="submit"]:active {
+            transform: translateY(1px);
+        }
+
+        button[type="submit"]:disabled {
+            background-color: #cbd5e1;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
         .success-msg {
             display: none;
-            background-color: #edf7ed;
-            color: #1e4620;
-            padding: 20px;
-            border-radius: 8px;
+            background-color: #f0fdf4;
+            color: #166534;
+            padding: 24px;
+            border-radius: var(--radius-md);
             text-align: center;
-            font-weight: bold;
-            border: 1px solid #c8e6c9;
+            border: 1px solid #bbf7d0;
             margin-top: 20px;
         }
+
         #prezzoContainer {
             display: none;
             margin-top: 15px;
             padding-top: 15px;
-            border-top: 1px dashed var(--border-color);
+            border-top: 1px dashed var(--border);
         }
-        .score-display {
-            background: #f0f7f4;
-            border: 1px solid #b7dfcd;
-            padding: 10px 15px;
-            border-radius: 6px;
-            margin-top: 15px;
-            font-weight: bold;
-            color: #2d6a4f;
-            display: flex;
-            justify-content: space-between;
-        }
+
+        /* Modale Duplicati */
         #duplicateModal {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(3px);
             justify-content: center;
             align-items: center;
             z-index: 1000;
+            padding: 16px;
         }
+
         .modal-content {
-            background: #fff;
-            padding: 25px;
-            border-radius: 8px;
-            max-width: 400px;
+            background: #ffffff;
+            padding: 26px;
+            border-radius: var(--radius-md);
+            max-width: 420px;
+            width: 100%;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: var(--shadow-md);
         }
+
         .modal-buttons {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             margin-top: 20px;
+        }
+
+        .modal-buttons button {
+            flex: 1;
+            padding: 10px 14px;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            cursor: pointer;
+            color: #ffffff;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
+    <!-- Loghi ordinati: HBL, doppiobaffo, ubt -->
     <div class="logos-container">
-        <img src="hbl.png" alt="Logo HBL" onerror="this.style.display='none'">
-        <img src="doppiobaffo.png" alt="Logo Doppiobaffo" onerror="this.style.display='none'">
-        <img src="ubt.png" alt="Logo UBT" onerror="this.style.display='none'">
+        <div class="logo-item">
+            <img src="hbl.png" alt="Logo HBL" onerror="this.parentElement.style.display='none'">
+        </div>
+        <div class="logo-item">
+            <img src="doppiobaffo.png" alt="Logo Doppiobaffo" onerror="this.parentElement.style.display='none'">
+        </div>
+        <div class="logo-item">
+            <img src="ubt.png" alt="Logo UBT" onerror="this.parentElement.style.display='none'">
+        </div>
     </div>
 
     <h1>Saison Oltrepò Pavese</h1>
@@ -227,7 +408,7 @@
 
     <form id="degustazioneForm">
         
-        <div class="highlight-box">
+        <div class="card-highlight">
             <label class="question" for="versione_birra">Seleziona la versione che stai assaggiando *</label>
             <select id="versione_birra" required onchange="controllaDuplicato()">
                 <option value="">-- Scegli la versione --</option>
@@ -239,51 +420,69 @@
         </div>
 
         <div class="section">
-            <label class="question" for="nome">Nome Assaggiatore</label>
+            <label class="question" for="nome">Nome Assaggiatore *</label>
             <input type="text" id="nome" placeholder="Il tuo nome o nickname" required onblur="controllaDuplicato()">
         </div>
 
-        <!-- MACROAREA: Esame Visivo -->
+        <!-- MACROAREA: Esame Visivo (con slider orizzontali, no punteggio, no hazy) -->
         <div class="section">
             <label class="question">Esame Visivo</label>
             
-            <div style="margin-bottom: 15px;">
-                <label style="font-size:0.9rem; font-weight:600; display:block; margin-bottom:5px;">Limpidezza:</label>
-                <select id="visivo_limpidezza" onchange="calcolaPunteggioVisivo()" required>
-                    <option value="">-- Seleziona limpidezza --</option>
-                    <option value="limpida">Limpida</option>
-                    <option value="leggermente velata">Leggermente velata</option>
-                    <option value="velata">Velata</option>
-                    <option value="torbida">Torbida</option>
-                    <option value="hazy">Hazy (Nebbiosa)</option>
-                </select>
+            <!-- Slider Limpidezza (senza hazy) -->
+            <div class="slider-box">
+                <div class="slider-header">
+                    <span class="slider-title">Limpidezza</span>
+                    <span class="slider-badge" id="badge_limpidezza">Limpida</span>
+                </div>
+                <div class="slider-input-wrapper">
+                    <input type="range" id="visivo_limpidezza" min="0" max="3" step="1" value="0" oninput="aggiornaSliderVisivo('limpidezza')">
+                </div>
+                <div class="slider-labels">
+                    <span>Limpida</span>
+                    <span>Legg. velata</span>
+                    <span>Velata</span>
+                    <span>Torbida</span>
+                </div>
             </div>
 
-            <div style="margin-bottom: 15px;">
-                <label style="font-size:0.9rem; font-weight:600; display:block; margin-bottom:5px;">Schiuma:</label>
-                <select id="visivo_schiuma" onchange="calcolaPunteggioVisivo()" required>
-                    <option value="">-- Seleziona schiuma --</option>
-                    <option value="assente">Assente</option>
-                    <option value="scarsa">Scarsa</option>
-                    <option value="media">Media</option>
-                    <option value="abbondante">Abbondante</option>
-                </select>
+            <!-- Slider Schiuma -->
+            <div class="slider-box">
+                <div class="slider-header">
+                    <span class="slider-title">Quantità Schiuma</span>
+                    <span class="slider-badge" id="badge_schiuma">Media</span>
+                </div>
+                <div class="slider-input-wrapper">
+                    <input type="range" id="visivo_schiuma" min="0" max="3" step="1" value="2" oninput="aggiornaSliderVisivo('schiuma')">
+                </div>
+                <div class="slider-labels">
+                    <span>Assente</span>
+                    <span>Scarsa</span>
+                    <span>Media</span>
+                    <span>Abbondante</span>
+                </div>
             </div>
 
-            <div style="margin-bottom: 15px;">
-                <label style="font-size:0.9rem; font-weight:600; display:block; margin-bottom:5px;">Persistenza schiuma:</label>
-                <select id="visivo_persistenza" onchange="calcolaPunteggioVisivo()" required>
-                    <option value="">-- Seleziona persistenza --</option>
-                    <option value="evanescente">Evanescente</option>
-                    <option value="breve">Breve</option>
-                    <option value="media">Media</option>
-                    <option value="lunga">Lunga</option>
-                </select>
+            <!-- Slider Persistenza Schiuma -->
+            <div class="slider-box">
+                <div class="slider-header">
+                    <span class="slider-title">Persistenza Schiuma</span>
+                    <span class="slider-badge" id="badge_persistenza">Media</span>
+                </div>
+                <div class="slider-input-wrapper">
+                    <input type="range" id="visivo_persistenza" min="0" max="3" step="1" value="2" oninput="aggiornaSliderVisivo('persistenza')">
+                </div>
+                <div class="slider-labels">
+                    <span>Evanescente</span>
+                    <span>Breve</span>
+                    <span>Media</span>
+                    <span>Lunga</span>
+                </div>
             </div>
 
-            <div style="margin-top: 15px; border-top: 1px dashed var(--border-color); padding-top: 15px;">
-                <label class="question" style="font-size:0.95rem;">Quanto ti piace l'aspetto rosato della birra?</label>
-                <label style="font-size:0.85rem; font-weight:normal; margin-bottom:10px; color:#555;">Valuta da 1 (non mi piace) a 5 (mi piace molto):</label>
+            <!-- Gradimento aspetto rosato -->
+            <div style="margin-top: 20px; border-top: 1px dashed var(--border); padding-top: 16px;">
+                <label class="question" style="font-size:0.95rem; margin-bottom: 4px;">Quanto ti piace l'aspetto rosato della birra? *</label>
+                <span class="helper-text">Valuta da 1 (non mi piace) a 5 (mi piace molto):</span>
                 <div class="scale-group">
                     <label><input type="radio" name="aspetto_rosato_voto" value="1" required><br>1</label>
                     <label><input type="radio" name="aspetto_rosato_voto" value="2"><br>2</label>
@@ -291,11 +490,6 @@
                     <label><input type="radio" name="aspetto_rosato_voto" value="4"><br>4</label>
                     <label><input type="radio" name="aspetto_rosato_voto" value="5"><br>5</label>
                 </div>
-            </div>
-
-            <div class="score-display">
-                <span>Punteggio Esame Visivo (max 3):</span>
-                <span id="punteggioVisivoTesto">0.0 / 3</span>
             </div>
         </div>
 
@@ -308,7 +502,7 @@
                 <label><input type="radio" name="profumo_floreale_tipo" value="MEDIO"> Medio</label>
                 <label><input type="radio" name="profumo_floreale_tipo" value="INTENSO"> Intenso</label>
             </div>
-            <label class="question" style="font-size:0.85rem; font-weight:normal; margin-top:15px; color:#555;">Valuta da 1 a 5:</label>
+            <span class="helper-text" style="margin-top:14px;">Valuta gradimento da 1 a 5:</span>
             <div class="scale-group">
                 <label><input type="radio" name="profumo_floreale_voto" value="1"><br>1</label>
                 <label><input type="radio" name="profumo_floreale_voto" value="2"><br>2</label>
@@ -327,7 +521,7 @@
                 <label><input type="radio" name="profumo_fruttato_tipo" value="MEDIO"> Medio</label>
                 <label><input type="radio" name="profumo_fruttato_tipo" value="INTENSO"> Intenso</label>
             </div>
-            <label class="question" style="font-size:0.85rem; font-weight:normal; margin-top:15px; color:#555;">Valuta da 1 a 5:</label>
+            <span class="helper-text" style="margin-top:14px;">Valuta gradimento da 1 a 5:</span>
             <div class="scale-group">
                 <label><input type="radio" name="profumo_fruttato_voto" value="1"><br>1</label>
                 <label><input type="radio" name="profumo_fruttato_voto" value="2"><br>2</label>
@@ -345,7 +539,7 @@
                 <label><input type="radio" name="corposita_tipo" value="MEDIO CORPO"> Medio corpo</label>
                 <label><input type="radio" name="corposita_tipo" value="MOLTO CORPOSA"> Molto corposa</label>
             </div>
-            <label class="question" style="font-size:0.85rem; font-weight:normal; margin-top:15px; color:#555;">Valuta da 1 a 5:</label>
+            <span class="helper-text" style="margin-top:14px;">Valuta gradimento da 1 a 5:</span>
             <div class="scale-group">
                 <label><input type="radio" name="corposita_voto" value="1"><br>1</label>
                 <label><input type="radio" name="corposita_voto" value="2"><br>2</label>
@@ -364,7 +558,7 @@
                 <label><input type="radio" name="gusto_fruttato_tipo" value="MEDIO"> Medio</label>
                 <label><input type="radio" name="gusto_fruttato_tipo" value="INTENSO"> Intenso</label>
             </div>
-            <label class="question" style="font-size:0.85rem; font-weight:normal; margin-top:15px; color:#555;">Valuta da 1 a 5:</label>
+            <span class="helper-text" style="margin-top:14px;">Valuta gradimento da 1 a 5:</span>
             <div class="scale-group">
                 <label><input type="radio" name="gusto_fruttato_voto" value="1"><br>1</label>
                 <label><input type="radio" name="gusto_fruttato_voto" value="2"><br>2</label>
@@ -384,7 +578,7 @@
                 <label><input type="checkbox" name="retrogusto" value="SPEZIATO"> Speziato</label>
                 <label><input type="checkbox" name="retrogusto" value="ALTRO"> Altro</label>
             </div>
-            <label class="question" style="font-size:0.85rem; font-weight:normal; margin-top:15px; color:#555;">Valuta da 1 a 5:</label>
+            <span class="helper-text" style="margin-top:14px;">Valuta gradimento da 1 a 5:</span>
             <div class="scale-group">
                 <label><input type="radio" name="retrogusto_voto" value="1"><br>1</label>
                 <label><input type="radio" name="retrogusto_voto" value="2"><br>2</label>
@@ -430,19 +624,20 @@
     </form>
 
     <div id="successMessage" class="success-msg">
-        <p>Scheda inviata con successo! Grazie per la valutazione. 🍻</p>
-        <button type="button" id="resetBtn" onclick="location.reload();" style="margin-top: 15px; background-color: #27ae60;">Valuta un'altra birra</button>
+        <h3 style="margin-top:0;">Scheda inviata con successo!</h3>
+        <p>Grazie per il tuo prezioso contributo alla valutazione. 🍻</p>
+        <button type="button" id="resetBtn" onclick="location.reload();" style="margin-top: 15px; background-color: #27ae60; width: auto; padding: 10px 20px;">Valuta un'altra birra</button>
     </div>
 </div>
 
-<!-- Modale Avviso Doppio Voto -->
+<!-- Modale Duplicati -->
 <div id="duplicateModal">
     <div class="modal-content">
-        <h3 style="color: #c0392b; margin-top: 0;">Attenzione</h3>
-        <p id="modalText">Hai già inviato una valutazione per questa versione. Cosa desideri fare?</p>
+        <h3 style="color: #b91c1c; margin-top: 0;">Attenzione</h3>
+        <p id="modalText">Hai già inviato una valutazione per questa versione. Seleziona una versione differente o ricomincia.</p>
         <div class="modal-buttons">
-            <button type="button" onclick="cambiaVariante()" style="background-color: #2980b9;">Cambia Variante</button>
-            <button type="button" onclick="ricominciaScheda()" style="background-color: #c0392b;">Ricomincia</button>
+            <button type="button" onclick="cambiaVariante()" style="background-color: #0284c7;">Cambia Versione</button>
+            <button type="button" onclick="chiudiModale()" style="background-color: #64748b;">Chiudi</button>
         </div>
     </div>
 </div>
@@ -450,51 +645,47 @@
 <script>
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbz3sCQGgsuAKKJ1XUdeB6XOMa_JFfEkSvrr3HI2gouFQFTJuOZZd_7UZbHYc-tk31PC/exec";
 
-    function calcolaPunteggioVisivo() {
-        const limp = document.getElementById('visivo_limpidezza').value;
-        const schi = document.getElementById('visivo_schiuma').value;
-        const pers = document.getElementById('visivo_persistenza').value;
+    // Valori testuali per gli slider discreti
+    const mappeValori = {
+        limpidezza: ["limpida", "leggermente velata", "velata", "torbida"],
+        schiuma: ["assente", "scarsa", "media", "abbondante"],
+        persistenza: ["evanescente", "breve", "media", "lunga"]
+    };
 
-        let pLimp = 0, pSchi = 0, pPers = 0;
+    function aggiornaSliderVisivo(tipo) {
+        const slider = document.getElementById(`visivo_${tipo}`);
+        const badge = document.getElementById(`badge_${tipo}`);
+        const valIndex = parseInt(slider.value, 10);
+        const testo = mappeValori[tipo][valIndex];
+        badge.textContent = testo.charAt(0).toUpperCase() + testo.slice(1);
+    }
 
-        if (limp) {
-            pLimp = (limp === 'hazy') ? 0.5 : 1;
-        }
-        if (schi) {
-            pSchi = (schi === 'assente' || schi === 'scarsa') ? 0 : 1;
-        }
-        if (pers) {
-            if (pers === 'evanescente' || pers === 'breve') pPers = 0;
-            else if (pers === 'media') pPers = 0.5;
-            else if (pers === 'lunga') pPers = 1;
-        }
-
-        const totale = pLimp + pSchi + pPers;
-        document.getElementById('punteggioVisivoTesto').textContent = totale.toFixed(1) + " / 3";
-        return totale;
+    function normalizzaNome(nome) {
+        return nome.trim().toLowerCase();
     }
 
     function controllaDuplicato() {
-        const nome = document.getElementById('nome').value.trim().toLowerCase();
+        const nome = normalizzaNome(document.getElementById('nome').value);
         const versione = document.getElementById('versione_birra').value;
 
-        if (!nome || !versione) return;
+        if (!nome || !versione) return false;
 
         const votiFatti = JSON.parse(localStorage.getItem('voti_degustazione_saison') || '{}');
         if (votiFatti[nome] && votiFatti[nome].includes(versione)) {
             document.getElementById('duplicateModal').style.display = 'flex';
+            return true;
         }
+        return false;
+    }
+
+    function chiudiModale() {
+        document.getElementById('duplicateModal').style.display = 'none';
     }
 
     function cambiaVariante() {
-        document.getElementById('duplicateModal').style.display = 'none';
+        chiudiModale();
         document.getElementById('versione_birra').value = "";
         document.getElementById('versione_birra').focus();
-    }
-
-    function ricominciaScheda() {
-        localStorage.removeItem('voti_degustazione_saison');
-        location.reload();
     }
 
     function togglePrezzo(mostra) {
@@ -508,13 +699,22 @@
     document.getElementById('degustazioneForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        const nome = document.getElementById('nome').value.trim().toLowerCase();
+        const nomeRaw = document.getElementById('nome').value;
+        const nomeKey = normalizzaNome(nomeRaw);
         const versione = document.getElementById('versione_birra').value;
 
-        let votiFatti = JSON.parse(localStorage.getItem('voti_degustazione_saison') || '{}');
-        if (!votiFatti[nome]) votiFatti[nome] = [];
+        if (!nomeKey) {
+            alert("Per favore, inserisci il tuo nome prima di inviare.");
+            document.getElementById('nome').focus();
+            return;
+        }
 
-        if (votiFatti[nome].includes(versione)) {
+        let votiFatti = JSON.parse(localStorage.getItem('voti_degustazione_saison') || '{}');
+        if (!votiFatti[nomeKey]) {
+            votiFatti[nomeKey] = [];
+        }
+
+        if (votiFatti[nomeKey].includes(versione)) {
             document.getElementById('duplicateModal').style.display = 'flex';
             return;
         }
@@ -535,15 +735,18 @@
             return values.join(', ');
         };
 
+        const limpIndex = parseInt(document.getElementById('visivo_limpidezza').value, 10);
+        const schiIndex = parseInt(document.getElementById('visivo_schiuma').value, 10);
+        const persIndex = parseInt(document.getElementById('visivo_persistenza').value, 10);
+
         const dati = {
             timestamp: new Date().toISOString(),
             versione_birra: versione,
-            nome: document.getElementById('nome').value.trim(),
-            visivo_limpidezza: document.getElementById('visivo_limpidezza').value,
-            visivo_schiuma: document.getElementById('visivo_schiuma').value,
-            visivo_persistenza: document.getElementById('visivo_persistenza').value,
+            nome: nomeRaw.trim(),
+            visivo_limpidezza: mappeValori.limpidezza[limpIndex],
+            visivo_schiuma: mappeValori.schiuma[schiIndex],
+            visivo_persistenza: mappeValori.persistenza[persIndex],
             aspetto_rosato_voto: getRadioVal('aspetto_rosato_voto'),
-            visivo_punteggio: calcolaPunteggioVisivo(),
             profumo_floreale_tipo: getRadioVal('profumo_floreale_tipo'),
             profumo_floreale_voto: getRadioVal('profumo_floreale_voto'),
             profumo_fruttato_tipo: getRadioVal('profumo_fruttato_tipo'),
@@ -566,7 +769,7 @@
         })
         .then(response => response.text())
         .then(data => {
-            votiFatti[nome].push(versione);
+            votiFatti[nomeKey].push(versione);
             localStorage.setItem('voti_degustazione_saison', JSON.stringify(votiFatti));
 
             document.getElementById('degustazioneForm').style.display = 'none';
@@ -574,8 +777,8 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         })
         .catch(error => {
-            console.error('Errore:', error);
-            alert("Errore durante l'invio dei dati. Riprova.");
+            console.error('Errore durante l\'invio:', error);
+            alert("Si è verificato un errore durante l'invio dei dati. Riprova.");
             btn.disabled = false;
             btn.textContent = "Invia Scheda di Degustazione";
         });

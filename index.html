@@ -181,13 +181,12 @@
             border: 1px solid #b7dfcd;
             padding: 10px 15px;
             border-radius: 6px;
-            margin-top: 10px;
+            margin-top: 15px;
             font-weight: bold;
             color: #2d6a4f;
             display: flex;
             justify-content: space-between;
         }
-        /* Modale personalizzato per doppio voto */
         #duplicateModal {
             display: none;
             position: fixed;
@@ -240,11 +239,11 @@
         </div>
 
         <div class="section">
-            <label class="question" for="nome">Nome o ID Assaggiatore *</label>
+            <label class="question" for="nome">Nome Assaggiatore</label>
             <input type="text" id="nome" placeholder="Il tuo nome o nickname" required onblur="controllaDuplicato()">
         </div>
 
-        <!-- MACROAREA: Esame Visivo (Stile BJCP Sintetico) -->
+        <!-- MACROAREA: Esame Visivo -->
         <div class="section">
             <label class="question">Esame Visivo</label>
             
@@ -256,7 +255,7 @@
                     <option value="leggermente velata">Leggermente velata</option>
                     <option value="velata">Velata</option>
                     <option value="torbida">Torbida</option>
-                    <option value="hazy">Hazy (nebbioso)</option>
+                    <option value="hazy">Hazy (Nebbiosa)</option>
                 </select>
             </div>
 
@@ -271,7 +270,7 @@
                 </select>
             </div>
 
-            <div style="margin-bottom: 10px;">
+            <div style="margin-bottom: 15px;">
                 <label style="font-size:0.9rem; font-weight:600; display:block; margin-bottom:5px;">Persistenza schiuma:</label>
                 <select id="visivo_persistenza" onchange="calcolaPunteggioVisivo()" required>
                     <option value="">-- Seleziona persistenza --</option>
@@ -282,26 +281,21 @@
                 </select>
             </div>
 
+            <div style="margin-top: 15px; border-top: 1px dashed var(--border-color); padding-top: 15px;">
+                <label class="question" style="font-size:0.95rem;">Quanto ti piace l'aspetto rosato della birra?</label>
+                <label style="font-size:0.85rem; font-weight:normal; margin-bottom:10px; color:#555;">Valuta da 1 (non mi piace) a 5 (mi piace molto):</label>
+                <div class="scale-group">
+                    <label><input type="radio" name="aspetto_rosato_voto" value="1" required><br>1</label>
+                    <label><input type="radio" name="aspetto_rosato_voto" value="2"><br>2</label>
+                    <label><input type="radio" name="aspetto_rosato_voto" value="3"><br>3</label>
+                    <label><input type="radio" name="aspetto_rosato_voto" value="4"><br>4</label>
+                    <label><input type="radio" name="aspetto_rosato_voto" value="5"><br>5</label>
+                </div>
+            </div>
+
             <div class="score-display">
                 <span>Punteggio Esame Visivo (max 3):</span>
                 <span id="punteggioVisivoTesto">0.0 / 3</span>
-            </div>
-        </div>
-
-        <!-- 1. Aspetto Rosato -->
-        <div class="section">
-            <label class="question">Ti piace l'aspetto rosato e la sua schiuma?</label>
-            <div class="radio-group">
-                <label><input type="radio" name="aspetto_si_no" value="SI"> SI</label>
-                <label><input type="radio" name="aspetto_si_no" value="NO"> NO</label>
-            </div>
-            <label class="question" style="font-size:0.85rem; font-weight:normal; margin-top:15px; color:#555;">Valuta da 1 (non mi piace) a 5 (mi piace molto):</label>
-            <div class="scale-group">
-                <label><input type="radio" name="aspetto_voto" value="1"><br>1</label>
-                <label><input type="radio" name="aspetto_voto" value="2"><br>2</label>
-                <label><input type="radio" name="aspetto_voto" value="3"><br>3</label>
-                <label><input type="radio" name="aspetto_voto" value="4"><br>4</label>
-                <label><input type="radio" name="aspetto_voto" value="5"><br>5</label>
             </div>
         </div>
 
@@ -548,9 +542,8 @@
             visivo_limpidezza: document.getElementById('visivo_limpidezza').value,
             visivo_schiuma: document.getElementById('visivo_schiuma').value,
             visivo_persistenza: document.getElementById('visivo_persistenza').value,
+            aspetto_rosato_voto: getRadioVal('aspetto_rosato_voto'),
             visivo_punteggio: calcolaPunteggioVisivo(),
-            aspetto_si_no: getRadioVal('aspetto_si_no'),
-            aspetto_voto: getRadioVal('aspetto_voto'),
             profumo_floreale_tipo: getRadioVal('profumo_floreale_tipo'),
             profumo_floreale_voto: getRadioVal('profumo_floreale_voto'),
             profumo_fruttato_tipo: getRadioVal('profumo_fruttato_tipo'),
@@ -573,7 +566,6 @@
         })
         .then(response => response.text())
         .then(data => {
-            // Registra il voto nel localStorage per evitare doppioni
             votiFatti[nome].push(versione);
             localStorage.setItem('voti_degustazione_saison', JSON.stringify(votiFatti));
 

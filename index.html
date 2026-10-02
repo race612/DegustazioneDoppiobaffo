@@ -296,13 +296,13 @@
             text-transform: capitalize;
         }
 
-        .options-group, .radio-group {
+        .radio-group {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
         }
 
-        .options-group label, .radio-group label {
+        .radio-group label {
             background: #f8fafc;
             padding: 8px 14px;
             border-radius: var(--radius-sm);
@@ -316,33 +316,9 @@
             user-select: none;
         }
 
-        .options-group label:hover, .radio-group label:hover {
+        .radio-group label:hover {
             background: #f1f5f9;
             border-color: #cbd5e1;
-        }
-
-        .scale-group {
-            display: flex;
-            justify-content: space-between;
-            gap: 8px;
-            background: #f8fafc;
-            padding: 10px 12px;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--border);
-        }
-
-        .scale-group label {
-            flex: 1;
-            text-align: center;
-            cursor: pointer;
-            font-size: 0.88rem;
-            font-weight: 700;
-            padding: 6px 0;
-            border-radius: 4px;
-        }
-
-        .scale-group label:hover {
-            background: #e2e8f0;
         }
 
         button[type="submit"] {
@@ -384,13 +360,6 @@
             text-align: center;
             border: 1px solid #bbf7d0;
             margin-top: 20px;
-        }
-
-        #prezzoContainer {
-            display: none;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px dashed var(--border);
         }
 
         #duplicateModal {
@@ -979,68 +948,23 @@
             </div>
         </div>
 
-        <!-- Gusto Fruttato -->
+        <!-- MACROAREA 5: Valutazioni Finali -->
         <div class="section">
-            <label class="question">Gusto Fruttato</label>
-            <div class="options-group">
-                <label><input type="radio" name="gusto_fruttato_tipo" value="ASSENTE"> Assente</label>
-                <label><input type="radio" name="gusto_fruttato_tipo" value="DELICATO"> Delicato</label>
-                <label><input type="radio" name="gusto_fruttato_tipo" value="MEDIO"> Medio</label>
-                <label><input type="radio" name="gusto_fruttato_tipo" value="INTENSO"> Intenso</label>
-            </div>
-            <span class="helper-text" style="margin-top:14px;">Valuta gradimento da 1 a 5:</span>
-            <div class="scale-group">
-                <label><input type="radio" name="gusto_fruttato_voto" value="1"><br>1</label>
-                <label><input type="radio" name="gusto_fruttato_voto" value="2"><br>2</label>
-                <label><input type="radio" name="gusto_fruttato_voto" value="3"><br>3</label>
-                <label><input type="radio" name="gusto_fruttato_voto" value="4"><br>4</label>
-                <label><input type="radio" name="gusto_fruttato_voto" value="5"><br>5</label>
-            </div>
-        </div>
+            <h2 class="section-title">Valutazioni Finali</h2>
 
-        <!-- Note Descrittive Retrogusto -->
-        <div class="section">
-            <label class="question">Note Descrittive Retrogusto (puoi selezionare più elementi)</label>
-            <div class="options-group">
-                <label><input type="checkbox" name="retrogusto" value="MALTATO"> Maltato</label>
-                <label><input type="checkbox" name="retrogusto" value="AMARO"> Amaro</label>
-                <label><input type="checkbox" name="retrogusto" value="FRUTTATO"> Fruttato</label>
-                <label><input type="checkbox" name="retrogusto" value="SPEZIATO"> Speziato</label>
-                <label><input type="checkbox" name="retrogusto" value="ALTRO"> Altro</label>
+            <div style="margin-bottom: 18px;">
+                <label class="question">Secondo te si sente chiaramente la caratterizzazione con il bargnolino?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="chiara_caratterizzazione_bargnolino" value="SI"> SI</label>
+                    <label><input type="radio" name="chiara_caratterizzazione_bargnolino" value="NO"> NO</label>
+                </div>
             </div>
-            <span class="helper-text" style="margin-top:14px;">Valuta gradimento complessivo retrogusto da 1 a 5:</span>
-            <div class="scale-group">
-                <label><input type="radio" name="retrogusto_voto" value="1"><br>1</label>
-                <label><input type="radio" name="retrogusto_voto" value="2"><br>2</label>
-                <label><input type="radio" name="retrogusto_voto" value="3"><br>3</label>
-                <label><input type="radio" name="retrogusto_voto" value="4"><br>4</label>
-                <label><input type="radio" name="retrogusto_voto" value="5"><br>5</label>
-            </div>
-        </div>
 
-        <!-- Valutazioni Finali -->
-        <div class="section">
-            <label class="question">Secondo te, è abbastanza bargnolinosa?</label>
-            <div class="radio-group">
-                <label><input type="radio" name="abbastanza_bargnolinosa" value="SI"> SI</label>
-                <label><input type="radio" name="abbastanza_bargnolinosa" value="NO"> NO</label>
-            </div>
-        </div>
-
-        <!-- Intento d'acquisto e prezzo condizionale -->
-        <div class="section">
-            <label class="question">La compreresti?</label>
-            <div class="radio-group">
-                <label><input type="radio" name="compreresti" value="SI" onclick="togglePrezzo(true)"> SI</label>
-                <label><input type="radio" name="compreresti" value="NO" onclick="togglePrezzo(false)"> NO</label>
-            </div>
-            
-            <div id="prezzoContainer">
-                <label class="question" style="font-size:0.9rem; margin-bottom:8px;">Se sì, quanto saresti disposto a spendere (bott. 33cl)?:</label>
-                <div class="options-group" style="flex-direction: column; gap: 8px;">
-                    <label><input type="radio" name="prezzo_disposto" value="2-3 euro"> Da 2 a 3 euro</label>
-                    <label><input type="radio" name="prezzo_disposto" value="3-4 euro"> Da 3 a 4 euro</label>
-                    <label><input type="radio" name="prezzo_disposto" value="4-5 euro"> Da 4 a 5 euro</label>
+            <div>
+                <label class="question">Secondo te si sente chiaramente la caratterizzazione data dalla fermentazione mista?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="chiara_caratterizzazione_fermentazione" value="SI"> SI</label>
+                    <label><input type="radio" name="chiara_caratterizzazione_fermentazione" value="NO"> NO</label>
                 </div>
             </div>
         </div>
@@ -1158,14 +1082,6 @@
         document.getElementById('versione_birra').focus();
     }
 
-    function togglePrezzo(mostra) {
-        const container = document.getElementById('prezzoContainer');
-        container.style.display = mostra ? 'block' : 'none';
-        if (!mostra) {
-            document.querySelectorAll('input[name="prezzo_disposto"]').forEach(el => el.checked = false);
-        }
-    }
-
     document.getElementById('degustazioneForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
@@ -1196,13 +1112,6 @@
         const getRadioVal = (name) => {
             const el = document.querySelector(`input[name="${name}"]:checked`);
             return el ? el.value : "";
-        };
-
-        const getCheckboxesVal = (name) => {
-            const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
-            let values = [];
-            checkboxes.forEach((cb) => values.push(cb.value));
-            return values.join(', ');
         };
 
         const schiIndex = parseInt(document.getElementById('visivo_schiuma').value, 10);
@@ -1251,14 +1160,10 @@
             bocca_astringenza: mappeBoccali.astringenza[parseInt(document.getElementById('bocca_astringenza').value, 10)],
             bocca_calore_alcolico: mappeBoccali.calore_alcolico[parseInt(document.getElementById('bocca_calore_alcolico').value, 10)],
 
-            // Altri parametri degustazione
-            gusto_fruttato_tipo: getRadioVal('gusto_fruttato_tipo'),
-            gusto_fruttato_voto: getRadioVal('gusto_fruttato_voto'),
-            retrogusto: getCheckboxesVal('retrogusto'),
-            retrogusto_voto: getRadioVal('retrogusto_voto'),
-            abbastanza_bargnolinosa: getRadioVal('abbastanza_bargnolinosa'),
-            compreresti: getRadioVal('compreresti'),
-            prezzo_disposto: getRadioVal('prezzo_disposto'),
+            // Valutazioni Finali
+            chiara_caratterizzazione_bargnolino: getRadioVal('chiara_caratterizzazione_bargnolino'),
+            chiara_caratterizzazione_fermentazione: getRadioVal('chiara_caratterizzazione_fermentazione'),
+            
             note: document.getElementById('note').value
         };
 
